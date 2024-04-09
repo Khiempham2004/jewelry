@@ -1,0 +1,100 @@
+nav {
+    font-size: 20px;
+}
+
+#demo {
+    font-family: 'Times New Roman', Times, serif;
+}
+
+form {
+    font-family: 'Times New Roman', Times, serif;
+    margin-left: 250px;
+    margin-top: 80px;
+    display: flex;
+    text-align: center;
+}
+
+h2 {
+    margin-left: 250px;
+}
+
+.form-control {
+    width: 500px;
+    margin-top: 30px;
+    border: 2px solid black;
+    font-size: 20px;
+}
+
+.form-namephone {
+    font-size: 20px;
+    width: 500px;
+    margin-top: 30px;
+    margin-left: 30px;
+    border: 2px solid black;
+    border-radius: 4px;
+}
+
+button {
+    font-size: 30px;
+    margin-top: 30px;
+    width: 1040px;
+    background-color: blue;
+    margin-left: 250px;
+}
+
+.offcanvas-header {
+    font-size: 25px;
+}
+
+.offcanvas-header .form {
+    text-decoration: none;
+    margin-left: 30px;
+    border: 2px solid black;
+    color: black;
+    border-radius: 8px;
+}
+
+.offcanvas-header :hover {
+    color: red;
+}
+
+.offcanvas-body {
+    font-size: 25px;
+}
+
+.offcanvas-body .form {
+    text-decoration: none;
+    color: black;
+}
+
+.offcanvas-body :hover {
+    color: red;
+}
+
+#open {
+    margin-left: 30px;
+    width: 100px;
+    border: 2px solid #0d6efd;
+    background-color: #0d6efd;
+}
+.store{
+    margin-top: 50px;
+}
+#open i{
+    font-size: 70px;
+}
+#thoitrang {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+
+.gento {
+    color: aliceblue;
+    text-decoration: none;
+    font-size: 25px;
+    margin-left: 550px;
+}
+.cart {
+    font-size: 30px;
+}

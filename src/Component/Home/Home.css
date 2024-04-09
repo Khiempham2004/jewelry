@@ -1,0 +1,62 @@
+.cart {
+    margin-left: 600px;
+}
+
+.search {
+    margin-top: 30px;
+    font-size: 26px;
+    display: flex;
+}
+
+.search .icons {
+    margin-right: 130px;
+}
+
+.search input {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.container {
+    margin-top: 30px;
+}
+
+h2 {
+    margin-left: 680px;
+    margin-top: 40px;
+}
+
+.StorePro {
+    text-align: center;
+    margin-right: 180px;
+    margin-top: 30px;
+
+}
+
+.link {
+    background: #dadbdb;
+    border: 2px solid #dadbdb;
+}
+
+.product .StorePro {
+    margin-left: 100px;
+}
+.product .StorePro li {
+    width: calc(30.33333% - 20px);
+    display: inline-block;
+    margin-left: 10px;
+    text-align: center;
+    background: #dadbdb;
+    height: 55px;
+    line-height: 55px;
+    margin-right: 2px;
+}
+.StorePro .link:hover{
+    color: blue;
+}
+
+.StorePro .link {
+    font-size: 30px;
+    text-decoration: none;
+    color: black;
+}
