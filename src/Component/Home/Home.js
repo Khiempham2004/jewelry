@@ -3,14 +3,23 @@ import boxicons from 'boxicons';
 import './Home.css'
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import Tab from 'react-bootstrap/Tab';
+import Tabs from 'react-bootstrap/Tabs';
 const Home = () => {
+    const [currentCate, setCurrentCate] = useState('moi');
+
+    const categories = {
+        moi: ['sản phẩm 1', 'sản phẩm 2', 'sản phẩm 3'],
+        noibat: ['Sản phẩm nổi bật 1', 'Sản phẩm nổi bật 2'],
+        banchay: ['Sản phẩm bán chạy 1', 'Sản phẩm bán chạy 2', 'Sản phẩm bán chạy 3'],
+    }
+    const handleCategoryChange = (category) => {
+        setCurrentCate(category);
+    };
 
 
     return (
         <div>
-            <div className='search'>
-                <input type='text' placeholder='Tìm kiếm sản phẩm...' />
-            </div>
             <div className="container">
                 <div id="myCarousel" className="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
@@ -47,6 +56,7 @@ const Home = () => {
                     <li><Link to='/banchay' className='link'>Bán chạy</Link></li>
                 </ul>
             </div>
+
         </div>
     );
 }

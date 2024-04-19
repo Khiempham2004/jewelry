@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../Style.css'
+
 const Navbar = () => {
 
     return (
@@ -21,11 +22,11 @@ const Navbar = () => {
                 <div className="offcanvas-body">
                     <p><Link to='/trangchu' className='form' >Trang Chủ</Link></p>
                     <hr></hr>
-                    <p><Link to='' className='form'>Sản Phẩm</Link></p>
+                    <p><Link to='/sanpham' className='form'>Sản Phẩm</Link></p>
                     <hr></hr>
-                    <p><Link to='' className='form'>Blog</Link></p>
+                    <p><Link to='/blog' className='form'>Blog</Link></p>
                     <hr></hr>
-                    <p><Link to='' className='form'>Giới Thiệu</Link></p>
+                    <p><Link to='/gioithieu' className='form'>Giới Thiệu</Link></p>
                 </div>
             </div>
             <div className="btn btn-primary" id='thoitrang'>
@@ -38,6 +39,9 @@ const Navbar = () => {
                         <box-icon name='cart-alt' ></box-icon>
                     </Link>
                 </div>
+            </div>
+            <div className='search'>
+                <input type='text' placeholder='Tìm kiếm sản phẩm...' />
             </div>
         </div>
     );

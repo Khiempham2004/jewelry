@@ -1,25 +1,35 @@
-h1{
+h1 {
     text-align: center;
     margin-top: 40px;
 }
-.login{
-    font-size: 30px;
-}
-.form-Login{
-    width: 1000px;
-    border-radius: 8px;
-}
-.form-login{
-    margin-top: 30px;
-    width: 1000px;
-    border-radius: 8px;
-}
-.check{
+
+.login {
+    font-size: 25px;
     margin-left: 250px;
+}
+
+.form-Login {
+    border-radius: 8px;
+}
+.login .form-Login{
+    width: 1010px;
+}
+.check {
+    margin-left: 250px;
+    margin-top: 300px;
     font-size: 25px;
     margin-top: 30px;
     justify-content: center;
 }
-.btn{
+
+.btn {
     font-size: 25px;
+}
+
+.buttonLogin {
+    margin-left: 250px;
+    margin-top: 10px;
+    width: 1010px;
+    font-size: 25px;
+    background-color: #ddd;
 }

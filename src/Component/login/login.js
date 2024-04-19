@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import './login.css'
+
 const Login = () => {
 
     return (
@@ -9,14 +9,15 @@ const Login = () => {
             <form>
                 <div className='login'>
                     <input type='text' placeholder='Email' className='form-Login' /><br></br>
-                    <input type='text' placeholder='Mật Khẩu' className='form-login' />
+                    <input type='text' placeholder='Mật Khẩu' className='form-Login' />
                 </div>
+                <div className='check'>
+                    <input type='checkbox' />
+                    <span>Lưu mật khẩu</span>
+                </div>
+                <br></br>
+                <button type='submit' className='buttonLogin'>Login</button>
             </form>
-            <div className='check'>
-                <input type='checkbox' />
-                <span>Lưu mật khẩu</span>
-            </div>
-            <button type='submit'>Đăng Nhập</button>
         </div>
     );
 }
