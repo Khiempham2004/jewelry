@@ -1,0 +1,36 @@
+.footer-info-widget .hotline:hover {
+    text-decoration: none;
+}
+.footer-v1 {
+    background-color: #323c3f;
+    border: 2px solid black;
+    height: 770px;
+}
+
+form input {
+    border-radius: 8px;
+    font-size: 22px;
+    width: 1300px;
+}
+
+.footer-inner {
+    margin-left: 100px;
+}
+h4 {
+    margin-top: 40px;
+    color: white;
+}
+
+.row {
+    margin-top: 10px;
+}
+
+.center {
+    justify-content: space-between;
+    text-align: center;
+}
+
+a:hover {
+    text-decoration: none;
+    color: black;
+}

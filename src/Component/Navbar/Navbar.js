@@ -1,21 +1,56 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import '../Style.css'
+import '../Style.css';
 
+// import { Autocomplete } from '@mui/material';
 const Navbar = () => {
+    const [searchQuery, setSearchQuery] = useState('')
+    const [cartItems, setCartItems] = useState([
+        { id: 1, name: "product 1", price: 100 },
+        { id: 2, name: "product 2", price: 200 },
+        { id: 3, name: "product 3", price: 300 },
+    ]);
+    const handleSearchChange = (event) => {
+        setSearchQuery(event.target.value);
+    };
+
+    const filteredItems = cartItems.filter(item =>
+        item.name.toLowerCase().includes()
+    )
 
     return (
         <div>
             <div className="offcanvas offcanvas-start" id="demo">
                 <div>
                     <div className='search'>
-                        <input type='text' placeholder='Tìm kiếm sản phẩm...' />
+                        <input
+                            type='text'
+                            value={searchQuery}
+                            onChange={handleSearchChange}
+                            placeholder='Tìm kiếm sản phẩm...' />
+                    </div>
+                    <div className='cart'>
+                        {
+                            filteredItems.length > 0 ? (
+                                <ul>
+                                    {filteredItems.map(item => (
+                                        <li key={item.id}>
+                                            {item.name} - ${item.price}
+                                        </li>
+                                    ))}
+                                </ul>
+                            ) : (
+                                <p></p>
+                            )
+                        }
                     </div>
                 </div>
+
                 <hr></hr>
+
                 <div className="offcanvas-header">
-                    <p><Link to='/login' className='form' >Đăng Nhập</Link></p>
-                    <p ><Link to='/register' className='form'>Đăng Ký</Link></p>
+                    <p><Link to='/login' className='form-login' >Đăng Nhập</Link></p>
+                    <p ><Link to='/register' className='form-register'>Đăng Ký</Link></p>
                     <button type="button" className="btn-close" data-bs-dismiss="offcanvas"></button>
                 </div>
                 <hr></hr>
@@ -34,7 +69,7 @@ const Navbar = () => {
                     <i className='bx bx-signal-3'></i>
                 </button>
                 <div className='store'>
-                    <Link to='/trangchu' className='gento'>Gento Store</Link>
+                    <Link to='/' className='gento'>Gento Store</Link>
                     <Link to='/cart' className='cart'>
                         <box-icon name='cart-alt' ></box-icon>
                     </Link>

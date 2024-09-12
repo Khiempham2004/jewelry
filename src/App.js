@@ -11,6 +11,11 @@ import Store from './Component/Store/Store.js';
 import OutStand from './Component/Store/OutStand.js';
 import Footer from './Component/Footer/Footer.js';
 import Latest from './Component/Store/Latest.js';
+import Products from './Component/products/products.js';
+import Blog from './Component/blogs/blog.js';
+import Information from './Component/Store/Information.js';
+
+
 function App() {
   return (
     <BrowserRouter>
@@ -21,7 +26,15 @@ function App() {
         <Route path='/trangchu' element={<>
           <Following />
         </>} />
-
+        <Route path='/sanpham' element={<>
+          <Navbar />
+          <Products />
+        </>} />
+        <Route path='/blog' element={<>
+          <Navbar />
+          <Blog />
+        </>}
+        />
         <Route path='/register' element={<>
           <Navbar />
           <Register />
@@ -35,18 +48,26 @@ function App() {
           <Navbar />
           <Home />
           <Store />
-          <Footer /></>} />
+          <Information />
+          <Footer />
+        </>} />
         <Route path='/noibat' element={<>
           <Navbar />
           <Home />
-          <OutStand />
+          <OutStand/>
+          <Information/>
+          <Footer/>
         </>} />
         <Route path='/banchay' element={<>
           <Navbar />
           <Home />
           <Latest />
+          <Information/>
+          <Footer/>
         </>} />
-        <Route path='/karma' element={<><ProjectFollow /></>} />
+        <Route path='/karma' element={<>
+        <ProjectFollow/>
+        </>} />
       </Routes>
     </BrowserRouter>
   );

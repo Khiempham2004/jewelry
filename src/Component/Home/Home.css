@@ -24,6 +24,7 @@
 h2 {
     margin-left: 680px;
     margin-top: 40px;
+    font-size: 40px;
 }
 
 .StorePro {
@@ -50,6 +51,9 @@ h2 {
     height: 55px;
     line-height: 55px;
     margin-right: 2px;
+}
+.product .StorePro li:hover {
+    background-color: blue;
 }
 .StorePro .link:hover{
     color: blue;

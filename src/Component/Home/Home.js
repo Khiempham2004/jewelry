@@ -3,8 +3,6 @@ import boxicons from 'boxicons';
 import './Home.css'
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import Tab from 'react-bootstrap/Tab';
-import Tabs from 'react-bootstrap/Tabs';
 const Home = () => {
     const [currentCate, setCurrentCate] = useState('moi');
 

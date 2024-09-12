@@ -57,3 +57,48 @@ del {
     justify-content: center;
     margin-top: 50px;
 }
+
+.umbrella {
+    font-family:'Times New Roman', Times, serif;
+    margin-top: 25px;
+    background-color: whitesmoke;
+    width: 1260px;
+    height: 520px;
+    margin-left: 120px;
+    font-size: 25px;
+}
+
+.umbreImg {
+    width: 650px;
+    height: 400px;
+}
+a {
+    font-size: 18px;
+    text-decoration: none;
+}
+
+.umbrella a:hover {
+    color: red;
+    text-decoration: none;
+}
+
+p {
+    font-size: 20px;
+}
+
+.formationsucess {
+    margin-left: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.formationStruc {
+    font-family: 'Times New Roman', Times, serif;
+    margin-left: 120px;
+    margin-top: 20px;
+    font-size: 22px;
+}
+
+.formationStruc ul a:hover {
+    text-decoration: none;
+    color: red;
+}
