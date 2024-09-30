@@ -8,18 +8,34 @@ h1 {
     margin-left: 250px;
 }
 
+
+form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+.login-container {
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: center;
+    height: 50vh;
+    /* background-color: #f2f2f2; */
+}
+
 .form-Login {
     border-radius: 8px;
 }
-.login .form-Login{
+
+.login .form-Login {
     width: 1010px;
 }
-.check {
-    margin-left: 250px;
-    margin-top: 300px;
+
+.checkGento {
     font-size: 25px;
-    margin-top: 30px;
+    margin-top: 25px;
     justify-content: center;
+    display: flex;
 }
 
 .btn {
@@ -28,8 +44,58 @@ h1 {
 
 .buttonLogin {
     margin-left: 250px;
-    margin-top: 10px;
     width: 1010px;
     font-size: 25px;
     background-color: #ddd;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
+
+.accountGento {
+    justify-content: center;
+    display: flex;
+    margin-top: 25px;
+}
+
+/* 
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f2f2f2;
+}
+
+h1 {
+    margin-bottom:
+        30px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+}
+
+input {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius:
+        5px;
+    cursor:
+        pointer;
+} */

@@ -71,7 +71,8 @@ const Navbar = () => {
                 <div className='store'>
                     <Link to='/' className='gento'>Gento Store</Link>
                     <Link to='/cart' className='cart'>
-                        <box-icon name='cart-alt' ></box-icon>
+                        {/* <box-icon name='cart' ></box-icon> */}
+                        <i class='bx bx-cart'></i>
                     </Link>
                 </div>
             </div>

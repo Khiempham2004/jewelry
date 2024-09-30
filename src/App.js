@@ -14,6 +14,9 @@ import Latest from './Component/Store/Latest.js';
 import Products from './Component/products/products.js';
 import Blog from './Component/blogs/blog.js';
 import Information from './Component/Store/Information.js';
+import ProductsList from './Component/products/productsList.js';
+import BlogHome from './Component/products/blogHome.js';
+import ShoppingCart from './Component/shoppingCart/shoppingCart.js';
 
 
 function App() {
@@ -28,11 +31,15 @@ function App() {
         </>} />
         <Route path='/sanpham' element={<>
           <Navbar />
+          <ProductsList />
           <Products />
+          <Footer />
         </>} />
         <Route path='/blog' element={<>
           <Navbar />
+          <BlogHome /><br></br>
           <Blog />
+          <Footer />
         </>}
         />
         <Route path='/register' element={<>
@@ -43,7 +50,11 @@ function App() {
           <Navbar />
           <Login />
         </>} />
-        <Route />
+        <Route
+          path='/gioithieu' element={<>
+            <Navbar />
+          </>}
+        />
         <Route path='/moi' element={<>
           <Navbar />
           <Home />
@@ -54,20 +65,30 @@ function App() {
         <Route path='/noibat' element={<>
           <Navbar />
           <Home />
-          <OutStand/>
-          <Information/>
-          <Footer/>
+          <OutStand />
+          <Information />
+          <Footer />
         </>} />
         <Route path='/banchay' element={<>
           <Navbar />
           <Home />
           <Latest />
-          <Information/>
-          <Footer/>
+          <Information />
+          <Footer />
         </>} />
         <Route path='/karma' element={<>
-        <ProjectFollow/>
+          <Navbar />
+          <ProjectFollow />
+          <Footer />
         </>} />
+        <Route path='/cart' element={
+            <>
+              <Navbar />
+              <ShoppingCart /><hr></hr>
+              <Footer/>
+            </>
+          }
+        />
       </Routes>
     </BrowserRouter>
   );

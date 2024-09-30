@@ -2,107 +2,40 @@ import React, { useState } from 'react';
 import './Register.css'
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import * as yup from 'yup'
+import axios from 'axios';
+
+const registerSchema = yup.object().shape({
+    email: yup.string().email("Invalid email").required("This filed is required"),
+    username: yup.string().required("This filed is required"),
+    password: yup.string().required("This filed is required")
+})
 
 const registerForm = {
-    Email: "",
-    Username: "",
-    Password: "",
+    email: "",
+    uername: "",
+    password: "",
 }
 const isEmptyRegister = (value) => {
     return !value || value.trim().length < 1;
 }
 
 const Register = () => {
-    // const [register, setRegister] = useState(registerForm)
-    // const [formRrror, setFormError] = useState({})
-    // const navigate = useNavigate("");
-
-    // const validateFormRegister = () => {
-    //     const error = {};
-
-    //     if (isEmptyRegister(register.Password)) {
-    //         error["password"] = "Password is required";
-    //     }
-    //     if (isEmptyRegister(register.Email)) {
-    //         error["email"] = "Email is required";
-    //     }
-
-    //     setFormError(error);
-    //     return Object.keys(error).length === 0;
-    // };
-
-    // const handleEmail = (event) => {
-    //     const { value } = event.target;
-    //     setRegister({
-    //         ...register,
-    //         Email: value,
-    //     });
-    // };
-    // const handleUsername = (event) => {
-    //     const { value } = event.target;
-    //     setRegister({
-    //         ...register,
-    //         Username: value,
-    //     });
-    // };
-
-    // const handlePassword = (event) => {
-    //     const { value } = event.target;
-    //     setRegister({
-    //         ...register,
-    //         Password: value,
-    //     });
-    // };
-
-    // // const handleInputChange = (event) => {
-    // //     const { name, value } = event.target;
-    // //     setRegister({
-    // //         ...register,
-    // //         [name]: value,
-    // //     })
-    // // }
-    // // const handleClickFormRegister = (event) => {
-    // //     event.preventDefault();
-    // //     if (validateFormRegister()) {
-    // //         navigate('/login')
-    // //         alert("You have Register successfully logged ! ")
-    // //     } else {
-    // //         alert("There are errors in the form, please check! ")
-    // //     }
-    // // }
-    // const handleClickFormRegister = async (event) => {
-    //     event.preventDefault();
-    //     if (validateFormRegister()) {
-    //         try {
-    //             const response = await fetch('', {
-    //                 method: 'POST',
-    //                 headers: {
-    //                     'Content-Type': 'application/json'
-    //                 },
-    //                 body: JSON.stringify(register)
-    //             });
-    //             if (response.ok) {
-    //                 navigate('/');
-    //                 alert("You have registered successfully!");
-    //             }
-    //         } catch (error) {
-    //             alert(`Error: ${error.message}`);
-    //         }
-    //     } else {
-    //         alert("There are errors in the form, please check!");
-    //     }
-    // };
     const [formRegister, setFormRegister] = useState(registerForm)
+    const [email , setEmail] = useState('')
+    const [username , setUserName] = useState('')
+    const [password , setPassword] = useState('')
     const [formError, setFormError] = useState({});
+
     const navigate = useNavigate('');
 
     const validateForm = () => {
         const error = {};
 
-        if (isEmptyRegister(formRegister.Password)) {
+        if (isEmptyRegister(formRegister.password)) {
             error["Password"] = "";
         }
-        if (isEmptyRegister(formRegister.Email)) {
+        if (isEmptyRegister(formRegister.email)) {
             error["Email"] = "";
         }
         setFormError(error);
@@ -113,7 +46,7 @@ const Register = () => {
         const { value } = event.target;
         setFormRegister({
             ...formRegister,
-            Email: value,
+            email: value,
         });
     };
 
@@ -121,7 +54,7 @@ const Register = () => {
         const { value } = event.target;
         setFormRegister({
             ...formRegister,
-            UserName: value,
+            userName: value,
         })
     };
 
@@ -129,40 +62,58 @@ const Register = () => {
         const { value } = event.target;
         setFormRegister({
             ...formRegister,
-            Password: value,
+            password: value,
         });
     };
 
-    const handleClickForm = (event) => {
-        event.preventDefault()
-        if (validateForm()) {
-            navigate("/login");
-            console.log("formValue", formRegister)
-            alert('You have Register successfully logged ! ');
-        } else {
-            alert('This is an error alert - check it out')
+    const handleClickRegister = async (e) => {
+        e.preventDefault();
+        const registerClick = {
+            email,
+            username,
+            password : handlePassword,
+        }
+        try {
+            await axios.post("/http://localhost:9000/gento/register");
+            navigate('/login')
+            alert("You have successfully registered")
+            console.log("Form registering " , registerClick);
+        } catch (error) {
+            console.error('Error regitering form  ', error)
+            alert("You have not filled out the registration correctly.")
         }
     }
+
+    // const handleClickForm = (event) => {
+    //     event.preventDefault()
+    //     if (validateForm()) {
+    //         navigate("/login");
+    //         console.log("formValue", formRegister)
+    //         alert('You have Register successfully logged ! ');
+    //     } else {
+    //         alert('This is an error alert - check it out')
+    //     }
+    // }
 
 
     return (
         <div>
             <div>
                 <div className='register-heading'>
-                    <form action='' onSubmit={handleClickForm}>
+                    <form action='' onSubmit={handleClickRegister}>
                         <h1 className=''>Register</h1>
                         <div className="container">
                             <p className='singofLogin'>Please fill in this form to create an account.</p>
                             <hr></hr>
 
                             <label><b>Email</b></label>
-                            <input type="text" value={formRegister.Email} onChange={handleEmail} placeholder="Enter Email" name="email" id="email" required />
+                            <input type="text" value={formRegister.email} onChange={handleEmail} placeholder="Enter Email" name="email" id="email" required />
 
                             <label><b>UserName</b></label><br></br>
-                            <input type="username" value={formRegister.UserName} onChange={handleUserName} placeholder="username" id='password' name="username" required />
+                            <input type="username" value={formRegister.userName} onChange={handleUserName} placeholder="username" id='password' name="username" required />
                             <br></br>
                             <label><b>Password</b></label>
-                            <input type="password" value={formRegister.Password} onChange={handlePassword} placeholder="Password" name="psw-repeat" id="psw-repeat" required />
+                            <input type="password" value={formRegister.password} onChange={handlePassword} placeholder="Password" name="psw-repeat" id="psw-repeat" required />
                             <hr></hr>
                             <p>By creating an account you agree to our <Link to=''>Terms & Privacy</Link>.</p>
 

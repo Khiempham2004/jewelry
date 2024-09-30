@@ -7,12 +7,6 @@ const Footer = () => {
 
     return (
         <div>
-            {/* <div>
-                THEO DÕI CHÚNG TÔI
-                <a href=''><i className='bx bxl-facebook-circle' ></i></a>
-                <i class="fa fa-facebook-official"></i>
-            </div> */}
-
             <footer className="footer-v1">
                 <div clasclassNames="footer-info">
                     <div className="container">
@@ -22,9 +16,9 @@ const Footer = () => {
                                     <div className="footer-info-widget">
                                         <h3><span>Theo dõi chúng tôi</span></h3>
                                         <ul className="list-inline">
-                                            <li><Link to=""><box-icon type="logo" name="facebook-square"></box-icon></Link></li>
-                                            <li><Link to=""><box-icon type='logo' name='twitter'></box-icon></Link></li>
-                                            <li><Link to=""><box-icon type='logo' name='google-plus'></box-icon></Link></li>
+                                            <li><Link to=""><i className='bx bxl-facebook-square' ></i></Link></li>
+                                            <li><Link to=""><i className='bx bxl-twitter' ></i></Link></li>
+                                            <li><Link to=""><i className='bx bxl-google-plus' ></i></Link></li>
                                         </ul>
                                     </div>
                                 </div>

@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-const Introduces = () => {
+    const Introduces = () => {
     return (
         <div>
-            Introduces
+           Information
         </div>
     );
 }

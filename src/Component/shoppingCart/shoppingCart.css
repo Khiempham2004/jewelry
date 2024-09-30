@@ -1,0 +1,83 @@
+.cart-container {}
+
+.product {
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    /* padding: 10px; */
+}
+
+.product-info {
+    margin-left: 10px;
+}
+
+.quantity {
+    display: flex;
+    align-items: center;
+}
+
+.total {
+    margin-top: 20px;
+}
+.inp {
+    font-size: 24px;
+    border-radius: 7px;
+}
+.actions {
+    margin-top: 20px;
+}
+
+
+.gio-hang {
+    margin-left: 90px;
+    width: 900px;
+    background-color: whitesmoke;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    justify-content: space-between;
+}
+
+.headingCart {
+    margin-right: 1180px;
+}
+
+.cartIterm {
+    background-color: blue;
+    border-radius: 10px;
+}
+
+.san-pham {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.thong-tin-san-pham {
+    margin-left: 10px;
+}
+
+.btn-xoa {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.actions {
+    font-size: 22px;
+}
+
+.actions .productcart {
+    margin-left: 90px;
+    width: 900px;
+    border-radius: 10px;
+}
+
+.actions .productcart:hover {
+    background-color: cornflowerblue;
+}
+
+.actions .sanpham {
+    margin-left: 90px;
+    width: 900px;
+    border-radius: 10px;
+    background-color: blue;
+}

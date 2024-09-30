@@ -4,7 +4,7 @@ import Karma from '../../StoreProduct/Karma';
 const ProjectFollow = () => {
     return (
         <div>
-            <Karma/>
+            <Karma/><br></br>
         </div>
     );
 }

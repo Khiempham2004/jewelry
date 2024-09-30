@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Information = () => {
     return (
@@ -12,26 +13,26 @@ const Information = () => {
                     />
                 </div>
                 <div className='formationsucess'>
-                    <a href='' >Bí quyết án hàng thành công</a>
+                    <Link to='' >Bí quyết án hàng thành công</Link>
                     <p>[TheoVNExpress] Bán sản phẩm tốt, mô tả rõ ràng, phản hồi kịp thời, niềm nở khi trao đổi, luôn có ưu đãi, hậu mãi tốt… sẽ giúp các shop xây dựng được uy tín với...</p>
                 </div>
             </div>
 
             <div className='formationStruc'>
                 <ul>
-                    <a href=''>
+                    <Link to=''>
                         <li>99% Startup thất bại, hãy lắng nghe những chia sẻ đáng quý này để thành công</li>
-                    </a>
+                    </Link>
                 </ul><hr></hr>
                 <ul>
-                    <a href=''>
+                    <Link to=''>
                         <li>Lương sếp có thể thiếu nhưng tiền trả cho nhân viên</li>
-                    </a>
+                    </Link>
                 </ul><hr></hr>
                 <ul>
-                    <a href=''>
+                    <Link to=''>
                         <li>Doanh nghiệp bán hàng online nên chấm dứt khuyến mãi ảo</li>
-                    </a>
+                    </Link>
                 </ul>
             </div>
         </div>
