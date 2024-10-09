@@ -18,40 +18,59 @@
 .total {
     margin-top: 20px;
 }
+
 .inp {
     font-size: 24px;
     border-radius: 7px;
 }
+
 .actions {
     margin-top: 20px;
 }
 
 
 .gio-hang {
-    margin-left: 90px;
-    width: 900px;
+    /* margin-left: 90px;
+    width: 1200px;
     background-color: whitesmoke;
     border: 1px solid #ccc;
     border-radius: 10px;
-    justify-content: space-between;
-}
-
-.headingCart {
-    margin-right: 1180px;
-}
-
-.cartIterm {
-    background-color: blue;
+    justify-content: space-between; */
+    display: flex;
+    flex-direction: column;
+    margin-left: 90px;
+    width: 1200px;
+    background-color: whitesmoke;
+    border: 1px solid #ccc;
     border-radius: 10px;
 }
 
-.san-pham {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
+.headingCart {
+    /* margin-right: 1180px; */
+    text-align: center;
+    margin-bottom: 20px;
+
 }
 
-.thong-tin-san-pham {
+.cartIterm {
+    /* background-color: blue;
+    border-radius: 10px; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.san-pham {
+    /* display: flex;
+    align-items: center;
+    margin-bottom: 10px; */
+    display: flex;
+    align-items: center;
+}
+
+/* .thong-tin-san-pham {
     margin-left: 10px;
 }
 
@@ -80,4 +99,51 @@
     width: 900px;
     border-radius: 10px;
     background-color: blue;
+} */
+
+
+.thong-tin-san-pham {
+    margin-left: 10px;
+}
+
+/* Nút xóa */
+.btn-xoa {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: red;
+}
+
+/* Khu vực hành động */
+.actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    padding: 10px;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+
+.actions .productcart {
+    padding: 10px 20px;
+    background-color: black;
+    background-color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.actions .sanpham {
+    font-size: 18px;
+    padding: 10px 20px;
+    background-color: green;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.actions .productcart,
+.actions .sanpham:hover {
+    /* background-color: cornflowerblue; */
 }

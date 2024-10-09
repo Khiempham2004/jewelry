@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './shoppingCart.css'
 
-const ShoppingCart = () => {
-    const [quantity, setQuantity] = useState(1);
+const ShoppingCart = ({ cartItem }) => {
+    const [quantity, setQuantity] = useState(0);
     const [isModalVisiable, setModalVisiable] = useState(false)
 
     const price = 5000;
@@ -121,6 +121,18 @@ const ShoppingCart = () => {
                         </div>
                     </div>
                     <br></br>
+                    {cartItem.length === 0 ? (
+                        <p>Giỏ hàng trống</p>
+                        
+                    ) : (
+                        <ul>
+                            {cartItem.map((item, index) => (
+                                <li key={index}>
+                                    {item.name} - {item.price}₫
+                                </li>
+                            ))}
+                        </ul>
+                    )}
                     <div className="tong-tien">
                         <p>Thành tiền:
                             {totalPrice.toLocaleString()}₫
@@ -130,6 +142,7 @@ const ShoppingCart = () => {
                         </p>
                     </div>
                 </div>
+
                 <div className="actions">
                     <button className="productcart">
                         <Link to='/sanpham'>Tiếp tục mua sắm</Link>

@@ -66,41 +66,41 @@ const Register = () => {
         });
     };
 
-    const handleClickRegister = async (e) => {
-        e.preventDefault();
-        const registerClick = {
-            email,
-            username,
-            password : handlePassword,
-        }
-        try {
-            await axios.post("/http://localhost:9000/gento/register");
-            navigate('/login')
-            alert("You have successfully registered")
-            console.log("Form registering " , registerClick);
-        } catch (error) {
-            console.error('Error regitering form  ', error)
-            alert("You have not filled out the registration correctly.")
-        }
-    }
-
-    // const handleClickForm = (event) => {
-    //     event.preventDefault()
-    //     if (validateForm()) {
-    //         navigate("/login");
-    //         console.log("formValue", formRegister)
-    //         alert('You have Register successfully logged ! ');
-    //     } else {
-    //         alert('This is an error alert - check it out')
+    // const handleClickRegister = async (e) => {
+    //     e.preventDefault();
+    //     const registerClick = {
+    //         email,
+    //         username,
+    //         password : handlePassword,
+    //     }
+    //     try {
+    //         await axios.post("/http://localhost:9000/gento/register");
+    //         navigate('/login')
+    //         alert("You have successfully registered")
+    //         console.log("Form registering " , registerClick);
+    //     } catch (error) {
+    //         console.error('Error regitering form  ', error)
+    //         alert("You have not filled out the registration correctly.")
     //     }
     // }
+
+    const handleClickForm = (event) => {
+        event.preventDefault()
+        if (validateForm()) {
+            navigate("/login");
+            console.log("formValue", formRegister)
+            alert('You have Register successfully logged ! ');
+        } else {
+            alert('This is an error alert - check it out')
+        }
+    }
 
 
     return (
         <div>
             <div>
                 <div className='register-heading'>
-                    <form action='' onSubmit={handleClickRegister}>
+                    <form action='' onSubmit={handleClickForm}>
                         <h1 className=''>Register</h1>
                         <div className="container">
                             <p className='singofLogin'>Please fill in this form to create an account.</p>

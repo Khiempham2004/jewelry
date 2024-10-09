@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../Style.css';
 
-// import { Autocomplete } from '@mui/material';
 const Navbar = () => {
     const [searchQuery, setSearchQuery] = useState('')
     const [cartItems, setCartItems] = useState([

@@ -17,9 +17,18 @@ import Information from './Component/Store/Information.js';
 import ProductsList from './Component/products/productsList.js';
 import BlogHome from './Component/products/blogHome.js';
 import ShoppingCart from './Component/shoppingCart/shoppingCart.js';
-
+import { useState } from 'react';
+import Header from './Component/Header/Header.js';
+import AccountPage from './Component/Profile/AccountPage.js';
+import Orders from './Component/Profile/Orders.js';
 
 function App() {
+  const [cartItem, setCartItem] = useState([]);
+  const addToCart = (item) => {
+    setCartItem([...cartItem, item]);
+  };
+
+
   return (
     <BrowserRouter>
       <Routes>
@@ -42,10 +51,22 @@ function App() {
           <Footer />
         </>}
         />
+        <Route path='/header' element={
+          <>
+          <Navbar/>
+          <Header /></>
+        } />
         <Route path='/register' element={<>
           <Navbar />
           <Register />
         </>} />
+        <Route path='/account' element={<>
+          <Navbar />
+          <AccountPage />
+        </>} />
+        <Route path='/account/order' element={<>
+          <Navbar />
+          <Orders /></>} />
         <Route path='/login' element={<>
           <Navbar />
           <Login />
@@ -78,16 +99,16 @@ function App() {
         </>} />
         <Route path='/karma' element={<>
           <Navbar />
-          <ProjectFollow />
+          <ProjectFollow addToCart={addToCart} />
           <Footer />
         </>} />
         <Route path='/cart' element={
-            <>
-              <Navbar />
-              <ShoppingCart /><hr></hr>
-              <Footer/>
-            </>
-          }
+          <>
+            <Navbar />
+            <ShoppingCart cartItem={cartItem} /><hr></hr>
+            <Footer />
+          </>
+        }
         />
       </Routes>
     </BrowserRouter>
