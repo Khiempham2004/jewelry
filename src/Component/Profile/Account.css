@@ -60,6 +60,7 @@ textarea {
 .inputRadio {
     font-size: 22px;
 }
+
 textarea {
     min-height: 50px;
     width: 1300px;
@@ -79,4 +80,104 @@ textarea {
 
 .btnOrder[type="submit"]:hover {
     background-color: #45a049;
+}
+
+b {
+    font-size: 22px;
+}
+
+.passwordAcccount {
+    display: flex;
+    margin-left: 80px;
+    margin-top: 30px;
+}
+
+.inpusPass {
+    font-size: 20px;
+}
+
+.btnPassword {
+    margin-top: 30px;
+    font-size: 22px;
+    border-radius: 8px;
+}
+
+.btnPassword:hover {
+    background-color: blue;
+}
+
+
+/* Định dạng cho button */
+.add-address-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+/* Định dạng cho modal */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* width: 1200px; */
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 15px;
+    border-radius: 5px;
+    max-width: 800px;
+    width: 100%;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.address-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.coutryNumber {
+    width: 200px;
+    font-size: 22px;
+}
+
+.address-form div {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.optionAdress{
+    display: flex;
+    margin-left: 550px;
+    font-size: 22px;
+    border-radius: 8px;
+}
+.buttonAddress {
+    margin-left:30px;
+    background-color: #007bff;
 }

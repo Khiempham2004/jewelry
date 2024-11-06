@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
+import useState from 'react';
 import { Link } from 'react-router-dom';
-import './Store.css'
-
-const Karma = () => {
+const Kimono = () => {
     const [cartItem, setCartItem] = useState([]);
     const [quantityStore, setQuantityStore] = useState(1);
     const [isModalStore, setModalStore] = useState(false);
@@ -16,7 +15,6 @@ const Karma = () => {
         name: 'Áo len Karma AF',
         price: 550000,
         desription: " Chiếc áo len này của Kimono Club sẽ giúp tăng thêm cảm giác mềm mại cho diện mạo hằng ngày của bạn...",
-        image: "https://bizweb.dktcdn.net/thumb/1024x1024/100/128/385/products/18.jpg?v=1477537547693",
     };
 
     //Thêm san pham vào giỏ hàng
@@ -82,8 +80,6 @@ const Karma = () => {
     const getTotalPrice = () => {
         return cartItem.reduce((total, item) => total + item.price * item.quantity, 0);
     };
-
-
     return (
         <div>
             <div className='listProduct'>
@@ -91,14 +87,14 @@ const Karma = () => {
                     Trang chủ
                 </Link>
                 <Link to='/sanpham' className='linkStore'>/ Quần áo</Link>
-                / Áo len Karma AF
+                / Áo len Kimono AF
             </div>
 
-            <h2 className='headingStore'>ÁO LEN KARMA AF</h2>
+            <h2 className='headingStore'>ÁO LEN Kimono AF</h2>
 
             <div className="product-container">
                 <div className="product-image">
-                    <img src="https://bizweb.dktcdn.net/thumb/1024x1024/100/128/385/products/18.jpg?v=1477537547693" alt="Product" />
+                    <img src="https://bizweb.dktcdn.net/thumb/medium/100/128/385/products/19.jpg?v=1477537649947" alt="Product" />
                 </div>
                 <div className="product-info">
                     <p className="product-price">550.000₫</p>
@@ -125,8 +121,8 @@ const Karma = () => {
                                     {cartItem.map((item) => (
                                         <li key={item.id}>
                                             - Số lượng: {item.quantity} &nbsp; <br></br>
-                                            <button onClick={() => handleEditCartItem(item)}>Sửa</button>
-                                            <button onClick={() => handleDeleteCartItem(item)}>Xóa</button>
+                                            {/* <button onClick={() => handleEditCartItem(item)}>Sửa</button> */}
+                                            {/* <button onClick={() => handleDeleteCartItem(item)}>Xóa</button> */}
                                             - Giá:{" "}
                                             {(item.price * item.quantity).toLocaleString()}đ
                                         </li>
@@ -150,7 +146,7 @@ const Karma = () => {
                                         <button onClick={handleCloseModal} style={modalStyles.closeButton}>X</button>
                                     </div>
                                     <div style={modalStyles.content}>
-                                        <img src="https://bizweb.dktcdn.net/thumb/compact/100/128/385/products/18.jpg?v=1477537547693" alt="Product" style={modalStyles.productImage} />
+                                        <img src="https://bizweb.dktcdn.net/thumb/medium/100/128/385/products/19.jpg?v=1477537649947" alt="Product" style={modalStyles.productImage} />
                                         <div>
                                             <p>{product.name}</p>
                                             <p>{product.price.toLocaleString()}đ</p>
@@ -168,11 +164,9 @@ const Karma = () => {
                     </div>
                 </div>
             </div>
-
         </div>
     );
 }
-
 
 //Các style cho modal 
 const modalStyles = {
@@ -230,4 +224,5 @@ const modalStyles = {
         borderRadius: '5px',
     },
 }
-export default Karma;
+
+export default Kimono;

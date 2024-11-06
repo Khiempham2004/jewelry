@@ -1,21 +1,31 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './shoppingCart.css'
+import Index from '../../pages/Following';
 
-const ShoppingCart = ({ cartItem }) => {
-    const [quantity, setQuantity] = useState(0);
-    const [isModalVisiable, setModalVisiable] = useState(false)
+const ShoppingCart = ({ cart }) => {
 
-    const price = 5000;
-    const totalPrice = quantity * price;
-
-    const handleBuyClick = () => {
-        setModalVisiable(true)
-    }
-
-    const handleCloseModal = () => {
-        setModalVisiable(false);
+    const product = {
+        id: 1,
+        name: 'Áo len Kimono SM',
+        price: 330000,
+        desription: " Chiếc áo len này của Kimono Club sẽ giúp tăng thêm cảm giác mềm mại cho diện mạo hằng ngày của bạn...",
+        image: "https://bizweb.dktcdn.net/thumb/1024x1024/100/128/385/products/19.jpg?v=1477537649947",
     };
+    // const [quantity, setQuantity] = useState(0);
+    // const [isModalVisiable, setModalVisiable] = useState(false)
+
+    // const price = 5000;
+    // const totalPrice = quantity * price;
+
+    // const handleBuyClick = () => {
+    //     setModalVisiable(true)
+    // }
+
+    // const handleCloseModal = () => {
+    //     setModalVisiable(false);
+    // };
+
     return (
         <div>
             <div className="">
@@ -25,85 +35,10 @@ const ShoppingCart = ({ cartItem }) => {
                     </Link>
                     / Giỏ hàng
                 </div>
-                {/* 
-                <div className="cart-container">
-                    <h1>ÁO LEN KARAMA AF </h1>
-                    <div className="">
-                        <h3 className="">
-                            Số lượng sản phẩm trong giỏ hàng: {quantity}
-                        </h3>
-                    </div>
-
-                    <div className="product">
-                        <img
-                            src="https://bizweb.dktcdn.net/thumb/medium/100/128/385/products/18.jpg?v=1477537547693"
-                            alt="Product"
-                            className="w-16 h-16 rounded-full"
-                        />
-                        <div className="">
-                            <h4 className="">Áo len Karma AF</h4>
-                            <p className="">550.000₫</p>
-                        </div>
-                        <input
-                            type="number"
-                            className=""
-                            value={quantity}
-                            onChange={(e) => setQuantity(Number(e.target.value))}
-                        />
-                        <button className="">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                strokeWidth={2}
-                                stroke="currentColor"
-                                className="w-6 h-6"
-                            >
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    d="M6 18L18 6M6 6l12 12"
-                                />
-                            </svg>
-                        </button>
-                    </div>
-
-                    <div className="">
-                        <p className="">Thành tiền</p>
-                        <p className="">
-                            {totalPrice.toLocaleString()}₫
-                        </p>
-                    </div>
-
-                    <div className="">
-                        <p className="">Phí vận chuyển</p>
-                        <p className="">Tính lúc thanh toán</p>
-                    </div>
-
-                    <div className="total">
-                        <p className="">Tổng tiền</p>
-                        <p className="">
-                            {totalPrice.toLocaleString()}₫
-                        </p>
-                    </div>
-
-                    <div className="actions">
-                        <button className="sanpham">
-                            <Link to='/sanpham'>Tiếp tục mua sắm</Link>
-                        </button><br></br>
-                        <button className="">
-                            Cập nhật giỏ hàng
-                        </button><br></br>
-                        <button className="">
-                            Tiến hành thanh toán
-                        </button>
-                    </div>
-                </div> */}
-
 
             </div>
             <div>
-                <h1 className='headingCart'>Giỏ hàng</h1>
+                {/* <h1 className='headingCart'>Giỏ hàng</h1>
                 <div className="gio-hang">
                     <p className='cartIterm'>Số lượng sản phẩm trong giỏ hàng: {quantity}</p>
                     <div className="san-pham">
@@ -123,7 +58,7 @@ const ShoppingCart = ({ cartItem }) => {
                     <br></br>
                     {cartItem.length === 0 ? (
                         <p>Giỏ hàng trống</p>
-                        
+
                     ) : (
                         <ul>
                             {cartItem.map((item, index) => (
@@ -154,7 +89,23 @@ const ShoppingCart = ({ cartItem }) => {
                     <button className="sanpham">
                         Tiến hành thanh toán
                     </button>
-                </div>
+                </div> */}
+            </div>
+
+            <div>
+                <h2>Gior hàng</h2>
+                {cart.length === 0 ? (
+                    <p>Giỏ hàng trống</p>
+                ) : (
+                    <ul>
+                        {cart.map((item, index) => (
+                            <li key={index}>
+                                {item.name}
+                            </li>
+                        ))}
+                    </ul>
+                )
+                }
             </div>
         </div>
     );

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './Account.css'
 import { Link } from 'react-router-dom';
+
 const Orders = () => {
     const [formOrder, setFormOrder] = useState({
         orders: '',
@@ -46,7 +47,9 @@ const Orders = () => {
                     <b>Xin chào , khiêm phạm!</b>
                     <hr></hr>
                     <Link to='/account'>Thông tin tài khoản </Link><br></br>
-                    <Link to='/account/order'>Đơn hàng của bạn</Link>
+                    <Link to='/account/order'>Đơn hàng của bạn</Link> <br></br>
+                    <Link to='/account/changePassword'>Đổi mật khẩu</Link><br></br>
+                    <Link to='/account/address'>Số địa chỉ</Link>
                 </div>
                 <div>
                     <h1>Đơn hàng của bạn</h1>

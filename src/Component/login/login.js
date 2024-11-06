@@ -66,7 +66,7 @@ const Login = () => {
     const handleClickForm = (event) => {
         event.preventDefault()
         if (validateLogin()) {
-            navigate('/header')
+            navigate('/account')
             alert('You have login successfully!"')
         } else (
             alert('There are errors in the form, please check!')

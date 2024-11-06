@@ -21,12 +21,23 @@ import { useState } from 'react';
 import Header from './Component/Header/Header.js';
 import AccountPage from './Component/Profile/AccountPage.js';
 import Orders from './Component/Profile/Orders.js';
+import ChangePassword from './Component/Profile/changePassword.js';
+import AddressNumber from './Component/Profile/addressNumber.js';
+import Kimono from './StoreProduct/Kimono.js';
 
 function App() {
   const [cartItem, setCartItem] = useState([]);
-  const addToCart = (item) => {
+
+  const addToCart = (item, product) => {
     setCartItem([...cartItem, item]);
+    // const existingProduct = cartItem.find((item) => item.id === Products.id);
+    // if(existingProduct) {
+    //   setCartItem(cartItem.map((item) =>
+    //     item.id === product.id ? {... item , quantify : item.quantify + 1} : item 
+    //   ))
+    // }
   };
+
 
 
   return (
@@ -39,7 +50,8 @@ function App() {
           <Following />
         </>} />
         <Route path='/sanpham' element={<>
-          <Navbar />
+          {/* <Navbar /> */}
+          <Header />
           <ProductsList />
           <Products />
           <Footer />
@@ -53,20 +65,34 @@ function App() {
         />
         <Route path='/header' element={
           <>
-          <Navbar/>
-          <Header /></>
+            {/* <Navbar /> */}
+            <Header /></>
         } />
         <Route path='/register' element={<>
           <Navbar />
           <Register />
         </>} />
         <Route path='/account' element={<>
-          <Navbar />
+          <Header />
           <AccountPage />
         </>} />
         <Route path='/account/order' element={<>
-          <Navbar />
-          <Orders /></>} />
+          <Header />
+          <Orders /></>}
+        />
+        <Route
+          path='/account/changePassword'
+          element={
+            <>
+              <Header />
+              <ChangePassword /></>
+          }
+        />
+        <Route path='/account/address' element={<>
+          <Header />
+          <AddressNumber />
+        </>}
+        />
         <Route path='/login' element={<>
           <Navbar />
           <Login />
@@ -101,6 +127,9 @@ function App() {
           <Navbar />
           <ProjectFollow addToCart={addToCart} />
           <Footer />
+        </>} />
+        <Route path='/kimono' element={<>
+          <Kimono />
         </>} />
         <Route path='/cart' element={
           <>
