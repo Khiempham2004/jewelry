@@ -23,7 +23,8 @@ import AccountPage from './Component/Profile/AccountPage.js';
 import Orders from './Component/Profile/Orders.js';
 import ChangePassword from './Component/Profile/changePassword.js';
 import AddressNumber from './Component/Profile/addressNumber.js';
-import Kimono from './StoreProduct/Kimono.js';
+import KimonoSM from './StoreProduct/KimonoSM.js';
+import Ksumi from './StoreProduct/Ksumi.js';
 
 function App() {
   const [cartItem, setCartItem] = useState([]);
@@ -80,8 +81,7 @@ function App() {
           <Header />
           <Orders /></>}
         />
-        <Route
-          path='/account/changePassword'
+        <Route path='/account/changePassword'
           element={
             <>
               <Header />
@@ -129,15 +129,24 @@ function App() {
           <Footer />
         </>} />
         <Route path='/kimono' element={<>
-          <Kimono />
+          <Navbar />
+          <KimonoSM />
+          <Footer />
         </>} />
-        <Route path='/cart' element={
-          <>
-            <Navbar />
-            <ShoppingCart cartItem={cartItem} /><hr></hr>
-            <Footer />
-          </>
-        }
+
+        <Route path='/ksumi' element={<>
+          <Navbar />
+          <Ksumi />
+          <Footer />
+        </>} />
+        <Route path='/cart'
+          element={
+            <>
+              <Navbar />
+              <ShoppingCart cartItem={cartItem} /><hr></hr>
+              <Footer />
+            </>
+          }
         />
       </Routes>
     </BrowserRouter>
