@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './shoppingCart.css'
-import Index from '../../pages/Following';
+//  import Index from '../../pages/Following';
 
-const ShoppingCart = ({ cart }) => {
+const ShoppingCart = () => {
 
     const product = {
         id: 1,
@@ -12,8 +12,9 @@ const ShoppingCart = ({ cart }) => {
         desription: " Chiếc áo len này của Kimono Club sẽ giúp tăng thêm cảm giác mềm mại cho diện mạo hằng ngày của bạn...",
         image: "https://bizweb.dktcdn.net/thumb/1024x1024/100/128/385/products/19.jpg?v=1477537649947",
     };
-    // const [quantity, setQuantity] = useState(0);
-    // const [isModalVisiable, setModalVisiable] = useState(false)
+    const [cart , setCart] = useState([])
+    const [quantity, setQuantity] = useState(0);
+    const [isModalVisiable, setModalVisiable] = useState(false)
 
     // const price = 5000;
     // const totalPrice = quantity * price;
@@ -38,7 +39,7 @@ const ShoppingCart = ({ cart }) => {
 
             </div>
             <div>
-                {/* <h1 className='headingCart'>Giỏ hàng</h1>
+                <h1 className='headingCart'>Giỏ hàng</h1>
                 <div className="gio-hang">
                     <p className='cartIterm'>Số lượng sản phẩm trong giỏ hàng: {quantity}</p>
                     <div className="san-pham">
@@ -56,26 +57,18 @@ const ShoppingCart = ({ cart }) => {
                         </div>
                     </div>
                     <br></br>
-                    {cartItem.length === 0 ? (
+                    {cart.length === 0 ? (
                         <p>Giỏ hàng trống</p>
 
                     ) : (
                         <ul>
-                            {cartItem.map((item, index) => (
+                            {cart.map((item, index) => (
                                 <li key={index}>
                                     {item.name} - {item.price}₫
                                 </li>
                             ))}
                         </ul>
                     )}
-                    <div className="tong-tien">
-                        <p>Thành tiền:
-                            {totalPrice.toLocaleString()}₫
-                        </p>
-                        <p className=""> Tổng tiền :
-                            {totalPrice.toLocaleString()}₫
-                        </p>
-                    </div>
                 </div>
 
                 <div className="actions">
@@ -88,11 +81,11 @@ const ShoppingCart = ({ cart }) => {
                     </button><hr></hr>
                     <button className="sanpham">
                         Tiến hành thanh toán
-                    </button>
-                </div> */}
+                    </button> 
+                </div> 
             </div>
 
-            <div>
+            {/* <div>
                 <h2>Gior hàng</h2>
                 {cart.length === 0 ? (
                     <p>Giỏ hàng trống</p>
@@ -106,7 +99,7 @@ const ShoppingCart = ({ cart }) => {
                     </ul>
                 )
                 }
-            </div>
+            </div> */}
         </div>
     );
 }

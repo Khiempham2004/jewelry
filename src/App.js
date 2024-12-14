@@ -25,6 +25,7 @@ import ChangePassword from './Component/Profile/changePassword.js';
 import AddressNumber from './Component/Profile/addressNumber.js';
 import KimonoSM from './StoreProduct/KimonoSM.js';
 import Ksumi from './StoreProduct/Ksumi.js';
+import BagMadam from './StoreProduct/BagMadam.js';
 
 function App() {
   const [cartItem, setCartItem] = useState([]);
@@ -43,6 +44,7 @@ function App() {
 
   return (
     <BrowserRouter>
+    {/* <Navbar/> */}
       <Routes>
         <Route path='/' element={<>
           <Navbar />
@@ -52,7 +54,7 @@ function App() {
         </>} />
         <Route path='/sanpham' element={<>
           {/* <Navbar /> */}
-          <Header />
+          <Header />  
           <ProductsList />
           <Products />
           <Footer />
@@ -139,11 +141,16 @@ function App() {
           <Ksumi />
           <Footer />
         </>} />
+        <Route path='/madam' element={<>
+          <Navbar/>
+          <BagMadam/>
+          <Footer/>
+        </>}/>
         <Route path='/cart'
           element={
             <>
               <Navbar />
-              <ShoppingCart cartItem={cartItem} /><hr></hr>
+              <ShoppingCart /><hr></hr>
               <Footer />
             </>
           }

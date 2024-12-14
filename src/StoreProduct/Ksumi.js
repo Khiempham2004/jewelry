@@ -6,15 +6,15 @@ import './Store.css';
 const Ksumi = () => {
     const [cartItem, setCartItem] = useState([]);
     const [quantityStore, setQuantityStore] = useState(1);
-    const [isModalStore, setModalStore] = useState(false);
+    const [isModalKsumi, setModalKsumi] = useState(false);
     const [isCartStore, setIsCartStore] = useState(false);
     const [isEditting, setIsEditting] = useState(null);
     const [editItem, setEditItem] = useState(null);
 
 
-    const product = {
+    const productKsumi = {
         id: 1,
-        name: 'Áo len Karma AF',
+        name: 'Áo len Ksumi',
         price: 330000,
         desription: " Chiếc áo lennày của Kasumi Club sẽ giúp tăng thêm cảm giác mềm mại cho diện mạo hàng ngày của bạn. -Chất liệu: cotton/nylon; lớp lót: polyester - Có thể giặt máy - Kiểu...",
     };
@@ -29,39 +29,41 @@ const Ksumi = () => {
     };
 
     const handleBuyClick = () => {
-        setModalStore(true);
+        setModalKsumi(true);
         //Cập nhạt giỏ hàng : thêm sản phẩm mới
         // setCartItem([...cartItem, product]);
     };
 
     const handleEditCartItem = (item) => {
-        setIsEditting(item.id);
-        setEditItem({ ...item });
-        console.log("Edit cart item  :>>", item);
+        const newQuantityKsumi = prompt("Nhập số lượng sản phẩm mới trong giỏ hàng : ", item.quantity);
+        if (newQuantityKsumi) {
+            setCartItem((cartItem) =>
+                cartItem.map((cartKsumi) =>
+                    cartKsumi.id === item.id
+                        ? { ...cartKsumi, quantity: parseInt(newQuantityKsumi, 10) }
+                        : cartKsumi
+                )
+            );
+        }
     };
 
     const handleDeleteCartItem = (itemId) => {
-        const updatedCart = cartItem.filter((item) => item.id !== itemId);
-        addToCart(updatedCart);
+        setCartItem((prevCart) => prevCart.filter((cartItem) => cartItem.id !== itemId.id));
     };
 
     //Đóng modal 
     const handleCloseModal = () => {
-        setModalStore(false)
+        setModalKsumi(false)
     };
 
     //Kiểm tra giỏ hàng : mở modal hoặc redirect đến trong giỏ hàng
     const handleCheckCart = () => {
         setIsCartStore(true);
-        setModalStore(false);
+        setModalKsumi(false);
     };
 
-    // const addToCart = () => {
-    //     setCartCount(cartCount + quantityStore);
-    // };
-
     // Thêm sản phẩm vào giỏ hàng
-    const addToCart = () => {
+    const addToCart = (product) => {
         setCartItem((prevCart) => {
             const existingProduct = prevCart.find((item) => item.id === product.id);
             if (existingProduct) {
@@ -76,12 +78,14 @@ const Ksumi = () => {
                 return [...prevCart, { ...product, quantity: 1 }];
             }
         });
+        setModalKsumi(true); //Trạng thái modal
     };
 
     // Hàm tính tổng
     const getTotalPrice = () => {
         return cartItem.reduce((total, item) => total + item.price * item.quantity, 0);
     };
+
     return (
         <div>
             <div>
@@ -113,8 +117,8 @@ const Ksumi = () => {
                                 <span>{quantityStore}</span>
                                 <button onClick={() => handleQuantityChange(1)}>+</button>
                             </div>
-                            <p>{product.description}</p>
-                            <button onClick={() => addToCart({ ...product, quantityStore })}>Mua hàng</button>
+                            <p>{productKsumi.description}</p>
+                            <button onClick={() => addToCart({ ...productKsumi, quantity: 1 })}>Mua hàng</button>
 
                             <div className='cartItem'>
                                 {cartItem.length === 0 ? (
@@ -126,8 +130,7 @@ const Ksumi = () => {
                                                 - Số lượng: {item.quantity} &nbsp; <br></br>
                                                 <button onClick={() => handleEditCartItem(item)}>Sửa</button>
                                                 <button onClick={() => handleDeleteCartItem(item)}>Xóa</button>
-                                                - Giá:{" "}
-                                                {(item.price * item.quantity).toLocaleString()}đ
+                                                - Giá: {(item.price * item.quantity).toLocaleString()}đ
                                             </li>
                                         ))}
                                     </ul>
@@ -136,12 +139,8 @@ const Ksumi = () => {
                             </div>
                         </div>
 
-                        <h3>Tổng tiền: {getTotalPrice().toLocaleString()}đ</h3>
                         <div className="product-buttons">
-                            <button className="buy-button" onClick={handleBuyClick}>Mua hàng</button>
-                            <button className="call-button" >Gọi</button>
-
-                            {isModalStore && (
+                            {isModalKsumi && (
                                 <div style={modalStyles.overlay}>
                                     <div style={modalStyles.modal}>
                                         <div style={modalStyles.header}>
@@ -151,9 +150,9 @@ const Ksumi = () => {
                                         <div style={modalStyles.content}>
                                             <img src="https://bizweb.dktcdn.net/thumb/medium/100/128/385/products/3.jpg?v=1477537685450" alt="Product" style={modalStyles.productImage} />
                                             <div>
-                                                <p>{product.name}</p>
-                                                <p>{product.price.toLocaleString()}đ</p>
-                                                <p>{product.desription}</p>
+                                                <p>{productKsumi.name}</p>
+                                                <p>{productKsumi.price.toLocaleString()}đ</p>
+                                                <p>{productKsumi.desription}</p>
                                                 <p>Tổng tiền : {getTotalPrice().toLocaleString()}đ</p>
                                             </div>
                                         </div>
@@ -173,60 +172,109 @@ const Ksumi = () => {
     );
 };
 
+// const modalStyles = {
+//     overlay: {
+//         position: 'fixed',
+//         top: 0,
+//         left: 0,
+//         right: 0,
+//         bottom: 0,
+//         backgroundColor: 'rgba(0, 0, 0, 0.5)',
+//         display: 'flex',
+//         justifyContent: 'center',
+//         alignItems: 'center',
+//     },
+//     modal: {
+//         backgroundColor: '#fff',
+//         borderRadius: '5px',
+//         width: '1200px',
+//         position: 'relative',
+//     },
+//     header: {
+//         display: 'flex',
+//         justifyContent: 'space-between',
+//         alignItems: 'center',
+//         backgroundColor: 'blue',
+//         height: '50px',
+//         borderRadius: '5px'
+//     },
+//     closeButton: {
+//         background: 'none',
+//         border: 'none',
+//         fontSize: '16px',
+//         cursor: 'pointer',
+//     },
+//     content: {
+//         display: 'flex',
+//         alignItems: 'center',
+//         marginTop: '10px',
+//     },
+//     productImage: {
+//         width: '200px',
+//         marginRight: '10px',
+//         border: '1px solid black'
+//     },
+//     actions: {
+//         marginTop: '20px',
+//         justifyContent: 'space-between',
+//     },
+//     actionButton: {
+//         backgroundColor: '#007bff',
+//         color: '#fff',
+//         padding: '10px 488px',
+//         border: 'none',
+//         cursor: 'pointer',
+//         borderRadius: '5px',
+//     },
+// }
 const modalStyles = {
     overlay: {
-        position: 'fixed',
+        position: "fixed",
         top: 0,
         left: 0,
         right: 0,
         bottom: 0,
-        backgroundColor: 'rgba(0, 0, 0, 0.5)',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
+        backgroundColor: "rgba(0, 0, 0, 0.5)",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
     },
     modal: {
-        backgroundColor: '#fff',
-        borderRadius: '5px',
-        width: '1200px',
-        position: 'relative',
+        backgroundColor: "white",
+        padding: "20px",
+        borderRadius: "5px",
+        width: "870px",
+        height: "370px"
     },
     header: {
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        backgroundColor: 'blue',
-        height: '50px',
-        borderRadius: '5px'
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
     },
     closeButton: {
-        background: 'none',
-        border: 'none',
-        fontSize: '16px',
-        cursor: 'pointer',
+        backgroundColor: "transparent",
+        border: "none",
+        fontSize: "20px",
+        cursor: "pointer",
     },
     content: {
-        display: 'flex',
-        alignItems: 'center',
-        marginTop: '10px',
+        display: "flex",
+        gap: "10px",
     },
     productImage: {
-        width: '200px',
-        marginRight: '10px',
-        border: '1px solid black'
+        width: "180px",
+        height: "160px",
     },
     actions: {
-        marginTop: '20px',
-        justifyContent: 'space-between',
+        marginTop: "10px",
+        display: "flex",
+        justifyContent: "space-between",
     },
     actionButton: {
-        backgroundColor: '#007bff',
-        color: '#fff',
-        padding: '10px 488px',
-        border: 'none',
-        cursor: 'pointer',
-        borderRadius: '5px',
+        padding: "10px",
+        borderRadius: "5px",
+        border: "1px solid #000",
+        cursor: "pointer",
     },
-}
-
+};
 export default Ksumi;

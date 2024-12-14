@@ -1,25 +1,25 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import './Store.css'
+// import './Store.css'
+import '../StoreProduct/Karma.css'
+
+const productKarma = {
+    id: 1,
+    name: 'Áo len Karma AF',
+    price: 550000,
+    desription: " Chiếc áo len này của Kimono Club sẽ giúp tăng thêm cảm giác mềm mại cho diện mạo hằng ngày của bạn...",
+    image: "https://bizweb.dktcdn.net/thumb/1024x1024/100/128/385/products/18.jpg?v=1477537547693",
+};
+
 
 const Karma = () => {
     const [cartItem, setCartItem] = useState([]);
+    const [newCartKarma, setCartKarma] = useState([productKarma])
     const [quantityStore, setQuantityStore] = useState(1);
-    const [isModalStore, setModalStore] = useState(false);
+    const [isModalKarma, setModalKarma] = useState(false); // Trang thai modal
     const [isCartStore, setIsCartStore] = useState(false);
-    const [isEditting, setIsEditting] = useState(null);
-    const [editItem, setEditItem] = useState(null);
 
-
-    const product = {
-        id: 1,
-        name: 'Áo len Karma AF',
-        price: 550000,
-        desription: " Chiếc áo len này của Kimono Club sẽ giúp tăng thêm cảm giác mềm mại cho diện mạo hằng ngày của bạn...",
-        image: "https://bizweb.dktcdn.net/thumb/1024x1024/100/128/385/products/18.jpg?v=1477537547693",
-    };
-
-    //Thêm san pham vào giỏ hàng
+    // //Thêm san pham vào giỏ hàng
     const handleQuantityChange = (value) => {
         if (quantityStore + value >= 1) {
             setQuantityStore(quantityStore + value)
@@ -29,39 +29,54 @@ const Karma = () => {
     };
 
     const handleBuyClick = () => {
-        setModalStore(true);
+        setModalKarma(true);
         //Cập nhạt giỏ hàng : thêm sản phẩm mới
-        // setCartItem([...cartItem, product]);
+        setCartKarma([...cartItem, 1]);
     };
 
-    const handleEditCartItem = (item) => {
-        setIsEditting(item.id);
-        setEditItem({ ...item });
-        console.log("Edit cart item  :>>", item);
+    const handleEditKarmaItem = (item) => {
+        const newQuantityKarma = prompt("Nhập số lượng sản phẩm trong giỏ hàng :", item.quantity);
+        if (newQuantityKarma) {
+            setCartItem((prevCart) =>
+                prevCart.map((cartItem) =>
+                    cartItem.id === item.id
+                        ? { ...cartItem, quantity: parseInt(newQuantityKarma, 10) }
+                        : cartItem
+                )
+            );
+        }
     };
 
-    const handleDeleteCartItem = (itemId) => {
-        const updatedCart = cartItem.filter((item) => item.id !== itemId);
-        addToCart(updatedCart);
+    const handleDeleteKarmaItem = (item) => {
+        setCartItem((prevCart) => prevCart.filter((itemCart) => itemCart.id !== item.id));
     };
 
     //Đóng modal 
     const handleCloseModal = () => {
-        setModalStore(false)
+        setModalKarma(false);
     };
 
     //Kiểm tra giỏ hàng : mở modal hoặc redirect đến trong giỏ hàng
     const handleCheckCart = () => {
         setIsCartStore(true);
-        setModalStore(false);
+        setModalKarma(false);
     };
 
-    // const addToCart = () => {
-    //     setCartCount(cartCount + quantityStore);
-    // };
 
     // Thêm sản phẩm vào giỏ hàng
-    const addToCart = () => {
+    const addToCart = (product) => {
+        // setCartItem((prevCart) => {
+        //     const existingProduct = prevCart.find((item) => item.id === product.id);
+        //     if (existingProduct) {
+        //         // Nếu sản phẩm đã có trong giỏ hàng, tăng số lượng
+        //         return prevCart.map((item) =>
+        //             item.id === productKarma.id
+        //                 ? { ...item, quantity: item.quantity + productKarma.quantity }
+        //                 : item
+        //         );
+        //     }
+        //     return [...prevCart, { ...product, quantityStore: product.quantityStore || 1 }];
+        // });
         setCartItem((prevCart) => {
             const existingProduct = prevCart.find((item) => item.id === product.id);
             if (existingProduct) {
@@ -76,10 +91,11 @@ const Karma = () => {
                 return [...prevCart, { ...product, quantity: 1 }];
             }
         });
+        setModalKarma(true); // Hiển thị modal  
     };
 
     // Hàm tính tổng
-    const getTotalPrice = () => {
+    const getTotalPriceKarma = () => {
         return cartItem.reduce((total, item) => total + item.price * item.quantity, 0);
     };
 
@@ -114,8 +130,8 @@ const Karma = () => {
                             <span>{quantityStore}</span>
                             <button onClick={() => handleQuantityChange(1)}>+</button>
                         </div>
-                        <p>{product.description}</p>
-                        <button onClick={() => addToCart({ ...product, quantityStore })}>Mua hàng</button>
+                        <p>{productKarma.description}</p>
+                        <button onClick={() => addToCart({ ...productKarma, quantity: 1 })}>Mua hàng</button>
 
                         <div className='cartItem'>
                             {cartItem.length === 0 ? (
@@ -125,24 +141,20 @@ const Karma = () => {
                                     {cartItem.map((item) => (
                                         <li key={item.id}>
                                             - Số lượng: {item.quantity} &nbsp; <br></br>
-                                            <button onClick={() => handleEditCartItem(item)}>Sửa</button>
-                                            <button onClick={() => handleDeleteCartItem(item)}>Xóa</button>
-                                            - Giá:{" "}
-                                            {(item.price * item.quantity).toLocaleString()}đ
+                                            <button onClick={() => handleEditKarmaItem(item)}>Sửa</button>
+                                            <button onClick={() => handleDeleteKarmaItem(item)}>Xóa</button>
+                                            <br></br>
+                                            - Giá: {(item.price * item.quantity).toLocaleString()}đ
                                         </li>
                                     ))}
                                 </ul>
                             )}
-                            <h3>Tổng tiền : {getTotalPrice().toLocaleString()}đ</h3>
+                            <h3>Tổng tiền : {getTotalPriceKarma().toLocaleString()}đ</h3>
                         </div>
                     </div>
 
-                    <h3>Tổng tiền: {getTotalPrice().toLocaleString()}đ</h3>
                     <div className="product-buttons">
-                        <button className="buy-button" onClick={handleBuyClick}>Mua hàng</button>
-                        <button className="call-button" >Gọi</button>
-
-                        {isModalStore && (
+                        {isModalKarma && (
                             <div style={modalStyles.overlay}>
                                 <div style={modalStyles.modal}>
                                     <div style={modalStyles.header}>
@@ -152,10 +164,10 @@ const Karma = () => {
                                     <div style={modalStyles.content}>
                                         <img src="https://bizweb.dktcdn.net/thumb/compact/100/128/385/products/18.jpg?v=1477537547693" alt="Product" style={modalStyles.productImage} />
                                         <div>
-                                            <p>{product.name}</p>
-                                            <p>{product.price.toLocaleString()}đ</p>
-                                            <p>{product.desription}</p>
-                                            <p>Tổng tiền : {getTotalPrice().toLocaleString()}đ</p>
+                                            <p>{productKarma.name}</p>
+                                            <p>{productKarma.price.toLocaleString()}đ</p>
+                                            <p>{productKarma.desription}</p>
+                                            <p>Tổng tiền : {getTotalPriceKarma().toLocaleString()}đ</p>
                                         </div>
                                     </div>
                                     <div style={modalStyles.actions}>
@@ -175,59 +187,109 @@ const Karma = () => {
 
 
 //Các style cho modal 
+// const modalStyles = {
+//     overlay: {
+//         position: 'fixed',
+//         top: 0,
+//         left: 0,
+//         right: 0,
+//         bottom: 0,
+//         backgroundColor: 'rgba(0, 0, 0, 0.5)',
+//         display: 'flex',
+//         justifyContent: 'center',
+//         alignItems: 'center',
+//     },
+//     modal: {
+//         backgroundColor: '#fff',
+//         borderRadius: '5px',
+//         width: '1200px',
+//         position: 'relative',
+//     },
+//     header: {
+//         display: 'flex',
+//         justifyContent: 'space-between',
+//         alignItems: 'center',
+//         backgroundColor: 'blue',
+//         height: '50px',
+//         borderRadius: '5px'
+//     },
+//     closeButton: {
+//         background: 'none',
+//         border: 'none',
+//         fontSize: '16px',
+//         cursor: 'pointer',
+//     },
+//     content: {
+//         display: 'flex',
+//         alignItems: 'center',
+//         marginTop: '10px',
+//     },
+//     productImage: {
+//         width: '200px',
+//         marginRight: '10px',
+//         border: '1px solid black'
+//     },
+//     actions: {
+//         marginTop: '20px',
+//         justifyContent: 'space-between',
+//     },
+//     actionButton: {
+//         backgroundColor: '#007bff',
+//         color: '#fff',
+//         padding: '10px 488px',
+//         border: 'none',
+//         cursor: 'pointer',
+//         borderRadius: '5px',
+//     },
+// }
 const modalStyles = {
     overlay: {
-        position: 'fixed',
+        position: "fixed",
         top: 0,
         left: 0,
         right: 0,
         bottom: 0,
-        backgroundColor: 'rgba(0, 0, 0, 0.5)',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
+        backgroundColor: "rgba(0, 0, 0, 0.5)",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
     },
     modal: {
-        backgroundColor: '#fff',
-        borderRadius: '5px',
-        width: '1200px',
-        position: 'relative',
+        backgroundColor: "white",
+        padding: "20px",
+        borderRadius: "5px",
+        width: "850px",
+        height: "330px"
     },
     header: {
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        backgroundColor: 'blue',
-        height: '50px',
-        borderRadius: '5px'
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
     },
     closeButton: {
-        background: 'none',
-        border: 'none',
-        fontSize: '16px',
-        cursor: 'pointer',
+        backgroundColor: "transparent",
+        border: "none",
+        fontSize: "20px",
+        cursor: "pointer",
     },
     content: {
-        display: 'flex',
-        alignItems: 'center',
-        marginTop: '10px',
+        display: "flex",
+        gap: "10px",
     },
     productImage: {
-        width: '200px',
-        marginRight: '10px',
-        border: '1px solid black'
+        width: "180px",
+        height: "160px",
     },
     actions: {
-        marginTop: '20px',
-        justifyContent: 'space-between',
+        marginTop: "10px",
+        display: "flex",
+        justifyContent: "space-between",
     },
     actionButton: {
-        backgroundColor: '#007bff',
-        color: '#fff',
-        padding: '10px 488px',
-        border: 'none',
-        cursor: 'pointer',
-        borderRadius: '5px',
+        padding: "10px",
+        borderRadius: "5px",
+        border: "1px solid #000",
+        cursor: "pointer",
     },
-}
+};
 export default Karma;

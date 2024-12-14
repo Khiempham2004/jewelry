@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../Style.css';
+import { Authcontext } from '../login/Authcontext.js';
 
 const Navbar = () => {
     const [searchQuery, setSearchQuery] = useState('')
+    const { isLoggedIn, userName, logout } = useState(Authcontext);
+
     const [cartItems, setCartItems] = useState([
         { id: 1, name: "product 1", price: 100 },
         { id: 2, name: "product 2", price: 200 },
@@ -48,8 +51,18 @@ const Navbar = () => {
                 <hr></hr>
 
                 <div className="offcanvas-header">
-                    <p><Link to='/login' className='form-login' >Đăng Nhập</Link></p>
-                    <p ><Link to='/register' className='form-register'>Đăng Ký</Link></p>
+                    {
+                        isLoggedIn ? (
+                            <>
+                                <span>Xin chào {userName}</span>
+                                <button onClick={logout} style={{ marginLeft: "10px", padding: "5px 10px", background: "red", color: "white" }}>Đăng xuất</button>
+                            </>
+                        ) : (
+                            <>
+                                <p><Link to='/login' className='form-login' >Đăng Nhập</Link></p>
+                                <p ><Link to='/register' className='form-register'>Đăng Ký</Link></p>
+                            </>
+                        )}
                     <button type="button" className="btn-close" data-bs-dismiss="offcanvas"></button>
                 </div>
                 <hr></hr>

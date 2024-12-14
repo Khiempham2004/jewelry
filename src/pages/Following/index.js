@@ -7,8 +7,8 @@ import Header from '../../Component/Header/Header';
 const Index = () => {
   return (
     <div>
-      {/* <Navbar /> */}
-      <Header/>
+      <Navbar />
+      {/* <Header/> */}
       <Home />
     </div>
   );

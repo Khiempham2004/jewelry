@@ -22,9 +22,9 @@ const isEmptyRegister = (value) => {
 
 const Register = () => {
     const [formRegister, setFormRegister] = useState(registerForm)
-    const [email , setEmail] = useState('')
-    const [username , setUserName] = useState('')
-    const [password , setPassword] = useState('')
+    const [email, setEmail] = useState('')
+    const [username, setUserName] = useState('')
+    const [password, setPassword] = useState('')
     const [formError, setFormError] = useState({});
 
     const navigate = useNavigate('');
@@ -66,41 +66,49 @@ const Register = () => {
         });
     };
 
-    // const handleClickRegister = async (e) => {
-    //     e.preventDefault();
-    //     const registerClick = {
-    //         email,
-    //         username,
-    //         password : handlePassword,
-    //     }
-    //     try {
-    //         await axios.post("/http://localhost:9000/gento/register");
-    //         navigate('/login')
-    //         alert("You have successfully registered")
-    //         console.log("Form registering " , registerClick);
-    //     } catch (error) {
-    //         console.error('Error regitering form  ', error)
-    //         alert("You have not filled out the registration correctly.")
-    //     }
-    // }
+    const handleClickRegister = async (e) => {
+        e.preventDefault();
+        const registerData = {
+            email: "your_email@gmail.com",
+            username: "your_username",
+            password: "your_password",
+        };
 
-    const handleClickForm = (event) => {
-        event.preventDefault()
-        if (validateForm()) {
-            navigate("/login");
-            console.log("formValue", formRegister)
-            alert('You have Register successfully logged ! ');
-        } else {
-            alert('This is an error alert - check it out')
+        try {
+            await axios.post("http://localhost:9000/gento/register", registerData);
+            navigate('/login')
+            alert("You have successfully registered")
+            console.log("Form registering ", registerData);
+        } catch (error) {
+            console.error('Error regitering form  ', error)
+            alert("You have not filled out the registration correctly.")
         }
     }
+
+    // const handleClickForm = (event) => {
+    //     event.preventDefault()
+    //     if (validateForm()) {
+    //         navigate("/login");
+    //         console.log("formValue", formRegister)
+    //         alert('You have Register successfully logged ! ');
+    //     } else {
+    //         alert('This is an error alert - check it out')
+    //     }
+    // }
 
 
     return (
         <div>
+            <div className='listProduct'>
+                <Link to='/trangchu' className='linkList'>
+                    Trang chủ
+                </Link>
+                <Link to='/register' className='registerGento'> / Đăng ký tài khoản</Link>
+            </div>
+
             <div>
                 <div className='register-heading'>
-                    <form action='' onSubmit={handleClickForm}>
+                    <form action='' onSubmit={handleClickRegister}>
                         <h1 className=''>Register</h1>
                         <div className="container">
                             <p className='singofLogin'>Please fill in this form to create an account.</p>

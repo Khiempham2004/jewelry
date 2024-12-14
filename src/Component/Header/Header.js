@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Header.css'
 import { Link } from 'react-router-dom';
@@ -6,6 +6,18 @@ import { Link } from 'react-router-dom';
 const Header = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(true);
     const navigate = useNavigate();
+
+    const getUserInfo = () => {
+        const token = localStorage.getItem("accessToken");
+        if(!!token){
+
+        }
+    }
+
+    // life cycles react
+    useEffect(() => {
+        getUserInfo()
+    }, [])
 
     const handleLogout = () => {
         localStorage.removeItem('token');

@@ -68,12 +68,12 @@ const Products = (items) => {
 
             <div className='logogento'>
                 <div className='image'>
-                    <Link to='/KSUMI' className='sweater'>
+                    <Link to='/Madam' className='sweater'>
                         <img className='gentosweater' src='https://bizweb.dktcdn.net/thumb/medium/100/128/385/products/1.png?v=1474363067523' alt='logo' />
                         <h3 className='heading'>Túi xách thời trang Madam</h3>
                     </Link>
                     <div className='moneygento'>
-                        330.000đ <br></br>
+                        720.000đ <br></br>
                     </div>
                 </div>
                 <div className='contruct'>
@@ -86,7 +86,7 @@ const Products = (items) => {
                     </div>
                 </div>
                 <div className='contruct'>
-                    <Link to='/Lunarglide' className='sweater'>
+                    <Link to='/Moza' className='sweater'>
                         <img className='gentosweater' src=' https://bizweb.dktcdn.net/thumb/medium/100/128/385/products/2.jpg?v=1477537930627' alt='logo' />
                         <h3 className='heading'>Áo khoác gió Moza</h3>
                     </Link>
@@ -99,7 +99,7 @@ const Products = (items) => {
 
             <div className='logogento'>
                 <div className='image'>
-                    <Link to='/KSUMI' className='sweater'>
+                    <Link to='/ShoesDT' className='sweater'>
                         <img className='gentosweater' src='https://bizweb.dktcdn.net/thumb/medium/100/128/385/products/23.jpg?v=1477539007020' alt='logo' />
                         <h3 className='heading'>Giày thể thao nữ DT</h3>
                     </Link>
@@ -108,7 +108,7 @@ const Products = (items) => {
                     </div>
                 </div>
                 <div className='contruct'>
-                    <Link to='/Lunarglide' className='sweater'>
+                    <Link to='/Fashion-Bag' className='sweater'>
                         <img className='gentosweater' src=' https://bizweb.dktcdn.net/thumb/medium/100/128/385/products/24.jpg?v=1477539052267' alt='logo' />
                         <h3 className='heading'>Túi xách thời trang nắng gập</h3>
                     </Link>
@@ -117,7 +117,7 @@ const Products = (items) => {
                     </div>
                 </div>
                 <div className='contruct'>
-                    <Link to='/Lunarglide' className='sweater'>
+                    <Link to='/CurvStar' className='sweater'>
                         <img className='gentosweater' src=' https://bizweb.dktcdn.net/thumb/medium/100/128/385/products/5.jpg?v=1477539127913' alt='logo' />
                         <h3 className='heading'>Túi xách thời trang CurvStar</h3>
                     </Link>
@@ -130,7 +130,7 @@ const Products = (items) => {
 
             <div className='logogento'>
                 <div className='image'>
-                    <Link to='/KSUMI' className='sweater'>
+                    <Link to='Gucci' className='sweater'>
                         <img className='gentosweater' src='https://bizweb.dktcdn.net/thumb/medium/100/128/385/products/26-cc10f782-8207-46f0-ae9c-c642eaab1a16.jpg?v=1477539288820' alt='logo' />
                         <h3 className='heading'>Túi xách gucci</h3>
                     </Link>
@@ -139,7 +139,7 @@ const Products = (items) => {
                     </div>
                 </div>
                 <div className='contruct'>
-                    <Link to='/Lunarglide' className='sweater'>
+                    <Link to='/Chenal' className='sweater'>
                         <img className='gentosweater' src=' https://bizweb.dktcdn.net/thumb/medium/100/128/385/products/25-badd8f50-3380-4075-8825-d652ec713ecd.jpg?v=1477539238647' alt='logo' />
                         <h3 className='heading'>Túi xách thời trang Chenal</h3>
                     </Link>
@@ -148,7 +148,7 @@ const Products = (items) => {
                     </div>
                 </div>
                 <div className='contruct'>
-                    <Link to='/Lunarglide' className='sweater'>
+                    <Link to='/Prowin' className='sweater'>
                         <img className='gentosweater' src=' https://bizweb.dktcdn.net/thumb/medium/100/128/385/products/28.jpg?v=1477539363440' alt='logo' />
                         <h3 className='heading'>Giày cao cổ Prowin</h3>
                     </Link>

@@ -3,7 +3,6 @@
 .product {
     align-items: center;
     border-bottom: 1px solid #ccc;
-    /* padding: 10px; */
 }
 
 .product-info {
@@ -30,12 +29,6 @@
 
 
 .gio-hang {
-    /* margin-left: 90px;
-    width: 1200px;
-    background-color: whitesmoke;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    justify-content: space-between; */
     display: flex;
     flex-direction: column;
     margin-left: 90px;
@@ -46,15 +39,12 @@
 }
 
 .headingCart {
-    /* margin-right: 1180px; */
     text-align: center;
     margin-bottom: 20px;
 
 }
 
 .cartIterm {
-    /* background-color: blue;
-    border-radius: 10px; */
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -63,50 +53,14 @@
 }
 
 .san-pham {
-    /* display: flex;
-    align-items: center;
-    margin-bottom: 10px; */
     display: flex;
     align-items: center;
 }
-
-/* .thong-tin-san-pham {
-    margin-left: 10px;
-}
-
-.btn-xoa {
-    background: none;
-    border: none;
-    cursor: pointer;
-}
-
-.actions {
-    font-size: 22px;
-}
-
-.actions .productcart {
-    margin-left: 90px;
-    width: 900px;
-    border-radius: 10px;
-}
-
-.actions .productcart:hover {
-    background-color: cornflowerblue;
-}
-
-.actions .sanpham {
-    margin-left: 90px;
-    width: 900px;
-    border-radius: 10px;
-    background-color: blue;
-} */
-
 
 .thong-tin-san-pham {
     margin-left: 10px;
 }
 
-/* Nút xóa */
 .btn-xoa {
     background: none;
     border: none;
@@ -114,7 +68,6 @@
     color: red;
 }
 
-/* Khu vực hành động */
 .actions {
     display: flex;
     justify-content: space-between;
@@ -143,7 +96,3 @@
     cursor: pointer;
 }
 
-.actions .productcart,
-.actions .sanpham:hover {
-    /* background-color: cornflowerblue; */
-}
