@@ -52,32 +52,41 @@ const Login = () => {
         })
     }
 
-    const handleOnLogin = async () => {
+    const handleOnLogin = async (e) => {
+        e.preventDefault();
         const clickFormLogin = {
             email: login.email,
             password: login.password,
         };
-        
+
         try {
-            const result =  await axios.post('http://localhost:9000/gento/sign-in', clickFormLogin);
-            console.log(result, "result")
+            const result = await axios.post('http://localhost:9000/gento/login', clickFormLogin);
+            console.log(result, "result");
             const tokenGento = result.data.tokenGento;
 
-            if(!!tokenGento){
+            // Lưu token vào locakStorage 
+            if (!!tokenGento) {
                 localStorage.setItem("accessToken", tokenGento);
             };
 
-            navigate('/trangchu')
+            // decode đẻ thông tin người dùng
+            // const userData = jwt_decode(tokenGento);
+            // console.log("Logged in user : ", userData);
+            
+
+            navigate('/trangchu');
+            alert("You have login successfully!")
         } catch (error) {
-            console.log('Error login : ', error);
-            // alert('You have not filled out the loginstration correctly.')
+            // console.log('Error login : ', error);
+            console.error("Login error:", error.response?.data || error.message);
+            alert('You have not filled out the loginstration correctly.')
         }
     }
 
     const handleSubmitForm = (event) => {
-        event.preventDefault()
+        // event.preventDefault()
         if (validateLogin()) {
-            handleOnLogin()
+            // handleOnLogin()
             // navigate('/account')
             // alert('You have login successfully!"')
         } else (
@@ -91,11 +100,11 @@ const Login = () => {
                 <Link to='/trangchu' className='linkList'>
                     Trang chủ
                 </Link>
-                <Link to='/register' className='registerGento'> / Đăng nhập tài khoản</Link>
+                <Link to='/login' className='registerGento'> / Đăng nhập tài khoản</Link>
             </div>
             <div className='login-container'>
                 <h1>Create account</h1>
-                <form id='form' className='' onSubmit={handleSubmitForm}>
+                <form id='form' className='' onSubmit={handleOnLogin}>
                     <div className='login'>
                         <input value={login.email} type='text' onChange={handleEmail} placeholder='Email' className='form-Login' /><br></br>
                         <input value={login.password} onChange={handlePassword} type='Password' placeholder='Password' className='form-Login' />

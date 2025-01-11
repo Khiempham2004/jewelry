@@ -47,7 +47,7 @@ const Home = () => {
             </div>
 
             <div className='product'>
-                <h2>Sản Phẩm</h2>
+                <h2 className='gentoHead'>Sản Phẩm</h2>
                 <ul className='StorePro'>
                     <li><Link to='/moi' className='link'>Mới</Link></li>
                     <li><Link to='/noibat' className='link'>Nổi bật</Link></li>

@@ -1,41 +1,61 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import '../Style.css';
 import { Authcontext } from '../login/Authcontext.js';
+import { Autocomplete } from '@mui/material/Autocomplete';
+import { TextField } from '@mui/material/TextField';
+
 
 const Navbar = () => {
-    const [searchQuery, setSearchQuery] = useState('')
+    const productGento = useState([
+        { id: 1, name: 'Áo thun', price: 200000 },
+        { id: 2, name: 'Quần jeans', price: 500000 },
+        { id: 3, name: 'Giày thể thao', price: 800000 },
+        { id: 4, name: 'Balo thời trang', price: 300000 }
+    ])
+    const [searchQuery, setSearchQuery] = useState('');
+    const [filterName, setFilterName] = useState(productGento)
     const { isLoggedIn, userName, logout } = useState(Authcontext);
+    const [anchorEl, setAnchorEl] = React.useState(null);
+    const navigate = useNavigate('');
+    const open = Boolean(anchorEl);
 
-    const [cartItems, setCartItems] = useState([
-        { id: 1, name: "product 1", price: 100 },
-        { id: 2, name: "product 2", price: 200 },
-        { id: 3, name: "product 3", price: 300 },
-    ]);
     const handleSearchChange = (event) => {
-        setSearchQuery(event.target.value);
-    };
+        const query = event.target.value.toLowerCase();
+        setSearchQuery(query);
 
-    const filteredItems = cartItems.filter(item =>
-        item.name.toLowerCase().includes()
-    )
+        const filteredItems = productGento.filter(item =>
+            item.name.toLowerCase().includes(query)
+        );
+        setFilterName(filteredItems);
+    }
 
     return (
         <div>
             <div className="offcanvas offcanvas-start" id="demo">
                 <div>
                     <div className='search'>
-                        <input
-                            type='text'
-                            value={searchQuery}
-                            onChange={handleSearchChange}
-                            placeholder='Tìm kiếm sản phẩm...' />
+                        <Autocomplete
+                            className=''
+                            disablePortal
+                            options={productGento}
+                            sx={{ width: 350 }}
+                            renderInput={(params) => <TextField {...params} type='text' autoComplete='off' placeholder='Tìm kiếm sản phẩm....' label="Movie" />}
+                            onChange={(event, newValue) => {
+                                if (newValue) {
+                                    const { Link } = newValue;
+                                    navigate(`${Link}`, {
+                                        realative: "router"
+                                    });
+                                }
+                            }}
+                        />
                     </div>
                     <div className='cart'>
                         {
-                            filteredItems.length > 0 ? (
+                            filterName.length > 0 ? (
                                 <ul>
-                                    {filteredItems.map(item => (
+                                    {filterName.map(item => (
                                         <li key={item.id}>
                                             {item.name} - ${item.price}
                                         </li>

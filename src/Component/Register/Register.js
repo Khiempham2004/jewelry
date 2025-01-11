@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
-import './Register.css'
-import { useNavigate } from 'react-router-dom';
-import { Link } from 'react-router-dom';
-import * as yup from 'yup'
 import axios from 'axios';
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import * as yup from 'yup';
+import './Register.css';
 
 const registerSchema = yup.object().shape({
     email: yup.string().email("Invalid email").required("This filed is required"),
@@ -27,7 +26,7 @@ const Register = () => {
     const [password, setPassword] = useState('')
     const [formError, setFormError] = useState({});
 
-    const navigate = useNavigate('');
+    const navigate = useNavigate();
 
     const validateForm = () => {
         const error = {};
@@ -75,15 +74,19 @@ const Register = () => {
         };
 
         try {
-            await axios.post("http://localhost:9000/gento/register", registerData);
+            const response = await axios.post("http://localhost:9000/gento/register", registerData);
+            console.log("Registation  Response : " , response.data);
+            
+            // Lưu  token vào localStorage
+            localStorage.setItem("auToken :>> " , response.data.token)
             navigate('/login')
             alert("You have successfully registered")
             console.log("Form registering ", registerData);
         } catch (error) {
-            console.error('Error regitering form  ', error)
-            alert("You have not filled out the registration correctly.")
+            console.error('Error regitering form  ',error.response?.data || error.message)
+            alert(error.response?.data?.message  || "You have not filled out the registration correctly.")
         }
-    }
+    };
 
     // const handleClickForm = (event) => {
     //     event.preventDefault()
@@ -95,7 +98,6 @@ const Register = () => {
     //         alert('This is an error alert - check it out')
     //     }
     // }
-
 
     return (
         <div>
@@ -129,7 +131,7 @@ const Register = () => {
                         </div>
 
                         <div className="container signin">
-                            <p >Already have an account? <Link to=''>Sign in</Link>.</p>
+                            <p >Already have an account? <Link to='/register'>Sign in</Link>.</p>
                         </div>
                     </form>
                 </div>

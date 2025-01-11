@@ -1,31 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Navbar from './Component/Navbar/Navbar.js';
-import Register from './Component/Register/Register.js';
-import Home from './Component/Home/Home.js';
-import Login from './Component/login/login.js';
-import Following from './pages/Following/index.js'
-import ProjectFollow from './pages/ProjectFollow/ProjectFollow.js';
-import Store from './Component/Store/Store.js';
-import OutStand from './Component/Store/OutStand.js';
-import Footer from './Component/Footer/Footer.js';
-import Latest from './Component/Store/Latest.js';
-import Products from './Component/products/products.js';
-import Blog from './Component/blogs/blog.js';
-import Information from './Component/Store/Information.js';
-import ProductsList from './Component/products/productsList.js';
-import BlogHome from './Component/products/blogHome.js';
-import ShoppingCart from './Component/shoppingCart/shoppingCart.js';
 import { useState } from 'react';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import './App.css';
+import Footer from './Component/Footer/Footer.js';
 import Header from './Component/Header/Header.js';
+import Home from './Component/Home/Home.js';
+import Navbar from './Component/Navbar/Navbar.js';
 import AccountPage from './Component/Profile/AccountPage.js';
 import Orders from './Component/Profile/Orders.js';
-import ChangePassword from './Component/Profile/changePassword.js';
 import AddressNumber from './Component/Profile/addressNumber.js';
+import ChangePassword from './Component/Profile/changePassword.js';
+import Register from './Component/Register/Register.js';
+import Information from './Component/Store/Information.js';
+import Latest from './Component/Store/Latest.js';
+import OutStand from './Component/Store/OutStand.js';
+import Store from './Component/Store/Store.js';
+import Blog from './Component/blogs/blog.js';
+import Login from './Component/login/login.js';
+import BlogHome from './Component/products/blogHome.js';
+import Products from './Component/products/products.js';
+import ProductsList from './Component/products/productsList.js';
+import ShoppingCart from './Component/shoppingCart/shoppingCart.js';
+import BagMadam from './StoreProduct/BagMadam.js';
 import KimonoSM from './StoreProduct/KimonoSM.js';
 import Ksumi from './StoreProduct/Ksumi.js';
-import BagMadam from './StoreProduct/BagMadam.js';
+import Following from './pages/Following/index.js';
+import ProjectFollow from './pages/ProjectFollow/ProjectFollow.js';
 
 function App() {
   const [cartItem, setCartItem] = useState([]);
@@ -44,7 +43,7 @@ function App() {
 
   return (
     <BrowserRouter>
-    {/* <Navbar/> */}
+      {/* <Navbar/> */}
       <Routes>
         <Route path='/' element={<>
           <Navbar />
@@ -54,7 +53,7 @@ function App() {
         </>} />
         <Route path='/sanpham' element={<>
           {/* <Navbar /> */}
-          <Header />  
+          <Header />
           <ProductsList />
           <Products />
           <Footer />
@@ -142,10 +141,10 @@ function App() {
           <Footer />
         </>} />
         <Route path='/madam' element={<>
-          <Navbar/>
-          <BagMadam/>
-          <Footer/>
-        </>}/>
+          <Navbar />
+          <BagMadam />
+          <Footer />
+        </>} />
         <Route path='/cart'
           element={
             <>
