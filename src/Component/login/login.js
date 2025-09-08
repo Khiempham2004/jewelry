@@ -1,62 +1,34 @@
-import axios from 'axios';
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './login.css';
-// import { Authcontext } from './Authcontext';
-
-const isEmptyLogin = (value) => {
-    return !value || value.trim().length < 1;
-}
-
+import axios from 'axios';
 
 const Login = () => {
-    const [login, setLogin] = useState({
-        email: "",
-        password: ""
-    });
-    // const {login} = useContext(Authcontext);
-    const [error, setError] = useState({})
-    const [name, setName] = useState("");
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
+    const [error, setError] = useState({});
 
     const navigate = useNavigate('');
 
-    // const handleLogin = () => {
-    //     if (name) {
-    //         login(name); // Goi ham login va truyen ten tai khoan
-    //     }
-    // };
-
-
     const validateLogin = () => {
         const error = {};
-        if (isEmptyLogin(login.password)) {
+        if (!password || password.trim().length < 1) {
             error["Password"] = "Password is required"
         }
         setError(error);
         return Object.keys(error).length === 0;
     };
 
-    const handleEmail = (event) => {
-        const { value } = event.target;
-        setLogin({
-            ...login,
-            email: value,
-        })
-    }
-
-    const handlePassword = (event) => {
-        const { value } = event.target;
-        setLogin({
-            ...login,
-            password: value,
-        })
-    }
-
-    const handleOnLogin = async (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
+        if (!validateLogin()) {
+            return alert('There are errors in the form, please check!');
+        }
+
         const clickFormLogin = {
-            email: login.email,
-            password: login.password,
+            email: email,
+            password: password,
         };
 
         try {
@@ -69,53 +41,56 @@ const Login = () => {
                 localStorage.setItem("accessToken", tokenGento);
             };
 
-            // decode đẻ thông tin người dùng
-            // const userData = jwt_decode(tokenGento);
-            // console.log("Logged in user : ", userData);
-            
-
             navigate('/trangchu');
             alert("You have login successfully!")
         } catch (error) {
-            // console.log('Error login : ', error);
             console.error("Login error:", error.response?.data || error.message);
             alert('You have not filled out the loginstration correctly.')
         }
-    }
-
-    const handleSubmitForm = (event) => {
-        // event.preventDefault()
-        if (validateLogin()) {
-            // handleOnLogin()
-            // navigate('/account')
-            // alert('You have login successfully!"')
-        } else (
-            alert('There are errors in the form, please check!')
-        )
-    }
+    };
 
     return (
-        <div>
-            <div className='listProduct'>
-                <Link to='/trangchu' className='linkList'>
-                    Trang chủ
-                </Link>
-                <Link to='/login' className='registerGento'> / Đăng nhập tài khoản</Link>
-            </div>
-            <div className='login-container'>
-                <h1>Create account</h1>
-                <form id='form' className='' onSubmit={handleOnLogin}>
-                    <div className='login'>
-                        <input value={login.email} type='text' onChange={handleEmail} placeholder='Email' className='form-Login' /><br></br>
-                        <input value={login.password} onChange={handlePassword} type='Password' placeholder='Password' className='form-Login' />
+        <div className="login-container">
+            <form className="login-form" onSubmit={handleSubmit}>
+                <h2 className="login-title">Đăng Nhập</h2>
+                <div className="input-group">
+                    <label htmlFor="email">Email</label>
+                    <input
+                        type="email"
+                        id="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        required
+                        placeholder="Nhập email của bạn"
+                    />
+                </div>
+                <div className="input-group">
+                    <label htmlFor="password">Mật khẩu</label>
+                    <div className="password-wrapper">
+                        <input
+                            type={showPassword ? 'text' : 'password'}
+                            id="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            required
+                            placeholder="Nhập mật khẩu"
+                        />
+                        <span
+                            className="toggle-password"
+                            onClick={() => setShowPassword(!showPassword)}
+                            title={showPassword ? 'Ẩn mật khẩu' : 'Hiện mật khẩu'}
+                        >
+                            {showPassword ? '🙈' : '👁️'}
+                        </span>
                     </div>
-                    <br></br>
-                    <button type='submit' className='buttonLogin'>Login</button>
-                    <div className='accountGento'>
-                        <p>No account yet? <Link to='/register'>Register</Link></p>
-                    </div>
-                </form>
-            </div>
+                </div>
+                <button className="login-btn" type="submit">Đăng Nhập</button>
+                <div className="login-footer">
+                    <a href="#">Quên mật khẩu?</a>
+                    <span> | </span>
+                    <Link to="/register">Đăng ký</Link>
+                </div>
+            </form>
         </div>
     );
 }

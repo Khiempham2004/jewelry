@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import * as yup from 'yup';
 import './Register.css';
 
+
 const registerSchema = yup.object().shape({
     email: yup.string().email("Invalid email").required("This filed is required"),
     username: yup.string().required("This filed is required"),
@@ -75,16 +76,16 @@ const Register = () => {
 
         try {
             const response = await axios.post("http://localhost:9000/gento/register", registerData);
-            console.log("Registation  Response : " , response.data);
-            
+            console.log("Registation  Response : ", response.data);
+
             // Lưu  token vào localStorage
-            localStorage.setItem("auToken :>> " , response.data.token)
+            localStorage.setItem("auToken :>> ", response.data.token)
             navigate('/login')
             alert("You have successfully registered")
             console.log("Form registering ", registerData);
         } catch (error) {
-            console.error('Error regitering form  ',error.response?.data || error.message)
-            alert(error.response?.data?.message  || "You have not filled out the registration correctly.")
+            console.error('Error regitering form  ', error.response?.data || error.message)
+            alert(error.response?.data?.message || "You have not filled out the registration correctly.")
         }
     };
 

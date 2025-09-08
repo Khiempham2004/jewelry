@@ -1,18 +1,51 @@
+import Autocomplete from '@mui/material/Autocomplete';
+import TextField from '@mui/material/TextField';
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import '../Style.css';
 import { Authcontext } from '../login/Authcontext.js';
-import { Autocomplete } from '@mui/material/Autocomplete';
-import { TextField } from '@mui/material/TextField';
+import './Navbar.css';
 
 
 const Navbar = () => {
-    const productGento = useState([
-        { id: 1, name: 'Áo thun', price: 200000 },
-        { id: 2, name: 'Quần jeans', price: 500000 },
-        { id: 3, name: 'Giày thể thao', price: 800000 },
-        { id: 4, name: 'Balo thời trang', price: 300000 }
-    ])
+    const productGento = [
+        // {
+        //     id: "1",
+        //     label: "giày",
+        //     price: "350.000đ"
+        // },
+        // {
+        //     id: "2",
+        //     label: "Áo",
+        //     price: "550.000đ"
+        // },
+        // {
+        //     id: "3",
+        //     label: "áo len",
+        //     price: "330.000đ"
+        // },
+        // {
+        //     id: "4",
+        //     label: "túi xách thời trang",
+        //     price: "750.000đ"
+        // },
+        // {
+        //     id: "5",
+        //     label: "giày cầu lông Promax",
+        //     price: "590.000đ"
+        // },
+        // {
+        //     id: "6",
+        //     label: "Thắt lưng da cá sấu",
+        //     price: "950.000đ"
+        // },
+        // {
+        //     id: "7",
+        //     label: "Ví nữ cầm tay Bandolini",
+        //     price: "486.000đ"
+        // }
+    ];
+
     const [searchQuery, setSearchQuery] = useState('');
     const [filterName, setFilterName] = useState(productGento)
     const { isLoggedIn, userName, logout } = useState(Authcontext);
@@ -51,6 +84,7 @@ const Navbar = () => {
                             }}
                         />
                     </div>
+
                     <div className='cart'>
                         {
                             filterName.length > 0 ? (

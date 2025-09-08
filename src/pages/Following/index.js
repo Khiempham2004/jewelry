@@ -8,7 +8,6 @@ const Index = () => {
   return (
     <div>
       <Navbar />
-      {/* <Header/> */}
       <Home />
     </div>
   );

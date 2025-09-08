@@ -10,7 +10,7 @@ const Header = () => {
     const getUserInfo = () => {
         const token = localStorage.getItem("accessToken");
         if(!!token){
-
+            
         }
     }
 
